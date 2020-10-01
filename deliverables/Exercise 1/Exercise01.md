@@ -1,6 +1,24 @@
-# User Stories
+# Exercise 1
 
 
+
+### Use Cases
+
+- Register a new account
+- Log in with existing account
+- Look through catalog
+- Purchase a product/service
+- Offer a product/service for sale
+
+
+
+### Use Case Diagram
+
+![Use_Case_Diagram](C:\Users\tobi-\OneDrive\Documents\Uni\2020_HS\ESE\Project\ese2020-team3\deliverables\Exercise 1\Use_Case_Diagram.png)
+
+
+
+### User Stories
 
 **Corresponding to functional requirements**
 
