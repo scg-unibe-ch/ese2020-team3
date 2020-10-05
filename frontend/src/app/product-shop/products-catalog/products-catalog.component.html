@@ -1,0 +1,29 @@
+<div *ngFor="let product of products">
+    <mat-card *ngIf="product.confirmed">
+
+        <!--You offer the product-->
+        <h3 *ngIf="product.ownerToken==userToken">
+            You offer {{product.name}}
+        </h3>
+
+        <!--Someone else is offering the product-->
+        <h3 *ngIf="product.ownerToken!=userToken">
+            {{product.ownerName}} offers {{product.name}} {{product.bought ? '(Already Bought)' : ''}}
+        </h3>
+
+        <!--Product information-->
+        <p>{{product.description}}</p>
+        <p>Price: {{product.price}} Points</p>
+
+        <!--Button to add the product to the Shopping chart. Not accessible by the owner of the product!-->
+        <button *ngIf="loggedIn && userToken!=product.ownerToken && !product.bought" (click)="addProductToChart(product)">
+            Add to Chart
+        </button>
+
+        <!--Button to remove product from catalog. Only accessible by the owner of the product and an admin!-->
+        <button *ngIf="loggedIn && userToken==product.ownerToken && !product.bought" (click)="removeProduct(product)">
+            Remove
+        </button>
+
+    </mat-card>
+</div>

@@ -1,0 +1,40 @@
+<mat-card *ngIf="loggedIn">
+
+    <h3>Sell a Product</h3>
+
+    <!--Provide Name-->
+    <mat-form-field>
+        <mat-label>Your Product's Name</mat-label>
+        <input matInput [(ngModel)]="productName" name="productName" required>
+    </mat-form-field>
+
+    <!--Provide Description-->
+    <mat-form-field>
+        <mat-label>Your Product's Description</mat-label>
+        <textarea matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"
+            [(ngModel)]="productDescription"
+            required>
+        </textarea>
+    </mat-form-field>
+
+    <!--Select Price-->
+    <mat-form-field>
+        <mat-label>Price (1-10000)</mat-label>
+        <input matInput type="number" min="1" max="10000" oninput="validity.valid||(value='');" [(ngModel)]="productPrice" name="productPrice" required>
+    </mat-form-field>
+
+    <!--Submit your Product and wait for it to be confirmed by an Admin-->
+    <button *ngIf="!!(productName) && !!(productDescription)" (click)="submitProduct()">
+        Done
+    </button>
+
+    <!--TEMPORARY-->
+    <p>
+        {{userName}} offers {{productName}} for {{productPrice}} Points: "{{productDescription}}";
+    </p>
+
+</mat-card>

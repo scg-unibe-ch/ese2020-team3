@@ -1,0 +1,39 @@
+<mat-card>
+
+    <!--Chart Title-->
+    <h2>
+        Shopping Chart {{loggedIn ? 'of ' + userName : ''}}
+    </h2>
+
+    <!--Message when not logged in-->
+    <p *ngIf="!loggedIn">
+        Log in to buy products
+    </p>
+
+    <!--Message when logged in but chart is empty-->
+    <p *ngIf="products.length==0 && loggedIn">
+        No products in your chart
+    </p>
+
+    <!--Lists all products in the shopping chart-->
+    <div *ngIf="loggedIn && products.length!=0">
+        <div *ngFor="let product of products">
+            <h3>
+                {{product.name}}
+                ({{product.price}} Points)
+
+                <!--Button to remove product from shopping cart-->
+                <button (click)="removeProduct(product)">
+                    Remove
+                </button>
+            </h3>
+        </div>
+
+        <!--Buy the products in the chart-->
+        <button (click)="buyProducts()">
+            Buy
+        </button>
+
+    </div>
+
+</mat-card>

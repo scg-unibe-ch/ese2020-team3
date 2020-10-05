@@ -36,7 +36,7 @@ export class ProductShopComponent implements OnInit {
   }
 
   addProductToList(name: string, description: string, price: number) :void {
-    this.products.addProduct(new Product(0, this.userToken, this.userName, name, description, price, false));
+    this.products.addProduct(new Product(0, this.userToken, this.userName, name, description, price, false, true));
     this.update();
   }
 
@@ -52,9 +52,14 @@ export class ProductShopComponent implements OnInit {
   }
 
   removeProductFromChart(product: Product) : void {
+    product.bought = false;
     const index = this.chart.indexOf(product, 0);
         if (index > -1)
             this.chart.splice(index, 1);
     this.update();
+  }
+
+  buyProductsInChart() : void {
+
   }
 }
