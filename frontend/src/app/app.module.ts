@@ -16,7 +16,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserLoginComponent } from './user-login/user-login.component';
-import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { ProductShopComponent } from './product-shop/product-shop.component';
 import { SellProductsComponent } from './product-shop/sell-products/sell-products.component';
 import { ProductsCatalogComponent } from './product-shop/products-catalog/products-catalog.component';
@@ -28,7 +27,6 @@ import { ShoppingChartComponent } from './product-shop/shopping-chart/shopping-c
     TodoListComponent,
     TodoItemComponent,
     UserLoginComponent,
-    UserRegistrationComponent,
     ProductShopComponent,
     SellProductsComponent,
     ProductsCatalogComponent,
