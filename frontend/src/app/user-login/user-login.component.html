@@ -1,21 +1,28 @@
-<mat-card>
+<body>
+
   <div *ngIf="!loggedIn">
+      <mat-card>
     <mat-form-field>
       <input matInput placeholder="User Name" [(ngModel)]="userName" name="userName">
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Password" [(ngModel)]="password" name="password" type="password">
     </mat-form-field>
-    <button mat-flat-button color="primary" (click)="login()">Login</button>
+      <button mat-flat-button color="primary" (click)="login()">Login</button>
+  </mat-card>
   </div>
 
   <div *ngIf="loggedIn">
+      <mat-card>
     <button mat-flat-button color="warn" (click)="logout()">Logout</button>
     You are currently logged in as {{ userName }}
+  </mat-card>
   </div>
-</mat-card>
 
-<mat-card>
+    <mat-card>
   <button mat-flat-button color="primary" (click)="accessSecuredEndpoint()">Access Secure Endpoint (only for logged in users)</button>
-  {{ secureEndpointResponse }}
-</mat-card>
+  {{ secureEndpointResponse }}>
+  </mat-card>
+  </body>
+
+

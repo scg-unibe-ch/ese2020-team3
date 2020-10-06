@@ -7,7 +7,7 @@
 <mat-divider></mat-divider>
 
 <mat-tab-group animationDuration="800ms">
-  <mat-tab label="Todo List Example">
+  <mat-tab label="Todo List">
     <mat-card>
       <mat-form-field>
         <input matInput placeholder="List Name" [(ngModel)]="newTodoListName" name="name">
@@ -23,9 +23,11 @@
   </mat-tab>
 
 
-  <mat-tab label="User Login Example">
+  <mat-tab label="User Login">
     <app-user-login></app-user-login>
-    <app-user-registration></app-user-registration>
+  </mat-tab>
+  <mat-tab label="User Registration">
+
   </mat-tab>
 
   <mat-tab label="Shop">
