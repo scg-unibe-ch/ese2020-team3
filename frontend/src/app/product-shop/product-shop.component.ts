@@ -26,6 +26,6 @@ export class ProductShopComponent implements OnInit {
   update() : void {
     this.userToken = localStorage.getItem("userToken");
     this.userName = localStorage.getItem("userName");
-    this.loggedIn = !!(this.userToken)
+    this.loggedIn = !!(this.userToken);
   }
 }
