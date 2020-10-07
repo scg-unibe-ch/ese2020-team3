@@ -11,7 +11,6 @@ export class UserRegistrationComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
   }
-
   registrationForm: FormGroup;
 
   ngOnInit(): void {
