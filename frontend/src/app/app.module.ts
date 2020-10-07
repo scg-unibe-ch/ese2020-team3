@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
@@ -20,6 +20,8 @@ import { ProductShopComponent } from './product-shop/product-shop.component';
 import { SellProductsComponent } from './product-shop/sell-products/sell-products.component';
 import { ProductsCatalogComponent } from './product-shop/products-catalog/products-catalog.component';
 import { ShoppingChartComponent } from './product-shop/shopping-chart/shopping-chart.component';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { ShoppingChartComponent } from './product-shop/shopping-chart/shopping-c
     ProductShopComponent,
     SellProductsComponent,
     ProductsCatalogComponent,
-    ShoppingChartComponent
+    ShoppingChartComponent,
+    UserRegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,9 @@ import { ShoppingChartComponent } from './product-shop/shopping-chart/shopping-c
     MatCheckboxModule,
     MatCardModule,
     MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ReactiveFormsModule,
+    MatRadioModule,
   ],
   providers: [
     {

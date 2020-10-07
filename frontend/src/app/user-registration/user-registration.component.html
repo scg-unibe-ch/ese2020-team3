@@ -1,0 +1,149 @@
+<div class="registration-box">
+  <mat-card>
+    <mat-card-title>Registration</mat-card-title>
+    <form [formGroup]="registrationForm">
+      <br>
+      <div class="example-container">
+        <mat-form-field >
+          <mat-label>First name:</mat-label>
+          <input
+            matInput formControlName="firstname"
+            id="firstname"
+            required
+          >
+          <mat-hint *ngIf="registrationForm.controls['firstname'].invalid && (registrationForm.controls['firstname'].dirty || registrationForm.controls['firstname'].touched)">
+            <div *ngIf="registrationForm.controls['firstname'].errors.required">
+              First Name is required.
+            </div>
+          </mat-hint>
+        </mat-form-field>
+        <mat-form-field >
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput formControlName="lastname"
+            required
+          >
+          <mat-hint *ngIf="registrationForm.controls['lastname'].invalid && (registrationForm.controls['lastname'].dirty || registrationForm.controls['lastname'].touched)">
+            <div *ngIf="registrationForm.controls['lastname'].errors.required">
+              Last Name is required.
+            </div>
+          </mat-hint>
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="example-container">
+        <mat-form-field >
+          <mat-label>Username</mat-label>
+          <input
+            matInput formControlName="username"
+            required>
+          <mat-hint *ngIf="registrationForm.controls['username'].invalid && (registrationForm.controls['username'].dirty || registrationForm.controls['username'].touched)">
+            <div *ngIf="registrationForm.controls['username'].errors.required">
+              Username is required.
+            </div>
+          </mat-hint>
+        </mat-form-field>
+        <mat-form-field >
+          <mat-label>Email</mat-label>
+          <input
+            matInput formControlName="email"
+            required
+          >
+          <mat-hint *ngIf="registrationForm.controls['email'].invalid && (registrationForm.controls['email'].dirty || registrationForm.controls['email'].touched)">
+            <div *ngIf="registrationForm.controls['email'].invalid">
+              invalid email-form
+            </div>
+          </mat-hint>
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="example-container">
+        <mat-form-field >
+          <mat-label>Password</mat-label>
+          <input
+            matInput formControlName="password"
+            required
+            type="password"
+          >
+          <mat-hint *ngIf="registrationForm.controls['password'].invalid && (registrationForm.controls['password'].dirty || registrationForm.controls['password'].touched)">
+            <div *ngIf="registrationForm.controls['password'].invalid">
+              invalid password
+            </div>
+          </mat-hint>
+        </mat-form-field>
+        <mat-form-field >
+          <mat-label>Confirm Password</mat-label>
+          <input
+            matInput formControlName="confirmpassword"
+            required
+            type="password"
+          >
+        </mat-form-field>
+      </div>
+      <h5>••Combination of capital and small letters, numbers, and special characters, at least 7 characters•• </h5>
+      <br>
+
+      <mat-label>Gender:</mat-label>
+      <br>
+      <mat-radio-group
+        aria-label="Select an option"
+        formControlName="gender">
+        <mat-radio-button value="1">Male</mat-radio-button>
+        <mat-radio-button value="2">Female</mat-radio-button>
+      </mat-radio-group>
+      <br><br>
+
+      <mat-form-field >
+        <mat-label>Telephone Number</mat-label>
+        <input
+          matInput
+          formControlName="telephonenumber"
+        >
+      </mat-form-field>
+      <br>
+
+      <mat-label>Address:</mat-label>
+      <div class="example-container">
+        <mat-form-field >
+          <mat-label>Street</mat-label>
+          <input
+            matInput formControlName="street"
+          >
+        </mat-form-field>
+        <mat-form-field >
+          <mat-label>Pin code</mat-label>
+          <input
+            matInput formControlName="pincode"
+          >
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="example-container">
+        <mat-form-field >
+          <mat-label>City</mat-label>
+          <input
+            matInput formControlName="city"
+          >
+        </mat-form-field>
+        <mat-form-field >
+          <mat-label>Country</mat-label>
+          <input
+            matInput formControlName="country"
+          >
+        </mat-form-field>
+      </div>
+      <button mat-flat-button color="primary">
+        Register
+      </button>
+    </form>
+    <p>
+      You already have an account?
+      <button  routerLink="/LogIn" mat-button color="primary" type="submit">
+        Log in
+      </button>
+    </p>
+  </mat-card>
+</div>
