@@ -80,6 +80,11 @@
             required
             type="password"
           >
+          <mat-hint *ngIf=" (registrationForm.controls['confirmpassword'].dirty || registrationForm.controls['confirmpassword'].touched)">
+            <div *ngIf="registrationForm.errors?.passwordMismatch && (registrationForm.touched || registrationForm.dirty)">>
+              passwords dont match
+            </div>
+          </mat-hint>
         </mat-form-field>
       </div>
       <h5>••Combination of capital and small letters, numbers, and special characters, at least 7 characters•• </h5>
