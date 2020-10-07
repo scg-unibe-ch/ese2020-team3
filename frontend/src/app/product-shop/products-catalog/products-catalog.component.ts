@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../../models/product.model';
+import { ProductShopComponent } from '../product-shop.component';
 
 @Component({
   selector: 'app-products-catalog',
@@ -7,6 +8,8 @@ import { Product } from '../../models/product.model';
   styleUrls: ['./products-catalog.component.css']
 })
 export class ProductsCatalogComponent implements OnInit {
+
+  @Input() shop: ProductShopComponent;
 
   loggedIn = false;
   userIsAdmin = false;
@@ -29,15 +32,18 @@ export class ProductsCatalogComponent implements OnInit {
   }
 
   updateProducts(): void {
-    //LOAD FROM BACKEND
+    //LOAD CATALOGUE PRODUCTS FROM BACKEND
   }
-
+  
   removeProduct(product: Product): void {
     //UPDATE BACKEND
+    const index = this.products.indexOf(product, 0);
+    if (index > -1) {
+        this.products.splice(index, 1);
+    }
   }
 
   addProductToChart(product: Product): void {
-    //product.bought = true;
-    //UPDATE BACKEND
+    this.shop.chart.addProduct(product);
   }
 }

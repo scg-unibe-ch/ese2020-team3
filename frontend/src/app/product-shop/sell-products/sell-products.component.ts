@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Product } from 'src/app/models/product.model';
+import { ProductShopComponent } from '../product-shop.component';
 
 @Component({
   selector: 'app-sell-products',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sell-products.component.css']
 })
 export class SellProductsComponent implements OnInit {
+
+  @Input() shop: ProductShopComponent;
 
   loggedIn = false;
   userToken = '';
@@ -34,17 +38,18 @@ export class SellProductsComponent implements OnInit {
     this.loggedIn = !!(this.userToken);
   }
 
-  confirmProduct(e) {
-    if(!confirm('Are you sure?')) {
-      e.preventDefault();
-    }
-  }
-
   submitProduct() {
 
-    //STORE PRODUCT WITH CONFIRMED=FALSE
+    //Product to submit
+    var product = new Product(this.userToken, this.userName, this.productName, this.productDescription, this.productPrice, false);
+    
+    //TODO: STORE PRODUCT IN BACKEND CATALOGUE
 
+    //Reset form fields and give feedback
     this.resetAttributes();
     window.alert('Your Product has been submitted!');
+
+    //Add product to catalogue
+    this.shop.catalogue.products.push(product);
   }
 }

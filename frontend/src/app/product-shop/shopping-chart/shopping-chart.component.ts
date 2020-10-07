@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Product } from '../../models/product.model'
+import { Component, Input, OnInit } from '@angular/core';
+import { Product } from '../../models/product.model';
+import { ProductShopComponent } from '../product-shop.component';
 
 @Component({
   selector: 'app-shopping-chart',
@@ -7,6 +8,8 @@ import { Product } from '../../models/product.model'
   styleUrls: ['./shopping-chart.component.css']
 })
 export class ShoppingChartComponent implements OnInit {
+
+  @Input() shop: ProductShopComponent;
 
   loggedIn = false;
   userToken = '';
@@ -24,8 +27,8 @@ export class ShoppingChartComponent implements OnInit {
   update(): void {
     this.costs = 0;
     this.products.forEach(product => {
-      product.bought = true;
       this.costs += product.price;
+      product.inChart = true;
     });
     this.userToken = localStorage.getItem('userToken');
     this.userName = localStorage.getItem('userName');
@@ -47,6 +50,7 @@ export class ShoppingChartComponent implements OnInit {
     const index = this.products.indexOf(product, 0);
     if (index > -1) {
         this.products.splice(index, 1);
+        product.inChart = false;
         this.update();
     }
   }
@@ -60,6 +64,9 @@ export class ShoppingChartComponent implements OnInit {
     
     //REMOVE PRODUCTS FROM DATABASE
 
+    this.products.forEach(product => {
+      this.shop.catalogue.removeProduct(product);
+    });
     this.products = [];
     this.update();
   }

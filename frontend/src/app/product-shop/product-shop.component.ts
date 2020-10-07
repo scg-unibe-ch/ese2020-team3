@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {ProductList} from '../models/product-list.model'
-import { Product } from '../models/product.model';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ProductsCatalogComponent } from './products-catalog/products-catalog.component';
+import { SellProductsComponent } from './sell-products/sell-products.component';
+import { ShoppingChartComponent } from './shopping-chart/shopping-chart.component';
 
 @Component({
   selector: 'app-product-shop',
@@ -9,57 +10,22 @@ import { Product } from '../models/product.model';
 })
 export class ProductShopComponent implements OnInit {
 
-  products = new ProductList([]);
-  chart: Product[] = [];
-
   loggedIn = false;
   userName = '';
   userToken = '';
 
-  totalCosts = 0;
+  @ViewChild(ProductsCatalogComponent) catalogue: ProductsCatalogComponent;
+  @ViewChild(ShoppingChartComponent) chart: ShoppingChartComponent;
+  @ViewChild(SellProductsComponent) sellProducts: SellProductsComponent;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.update();
   }
 
   update() : void {
-    this.totalCosts = 0;
-    this.chart.forEach(product => {
-      this.totalCosts += product.price;
-    });
-
     this.userToken = localStorage.getItem("userToken");
     this.userName = localStorage.getItem("userName");
     this.loggedIn = !!(this.userToken)
-  }
-
-  addProductToList(name: string, description: string, price: number) :void {
-    this.products.addProduct(new Product(0, this.userToken, this.userName, name, description, price, false, true));
-    this.update();
-  }
-
-  removeProductFromList(product: Product) : void {
-    this.products.removeProduct(product);
-    this.update();
-  }
-
-  addProductToChart(product: Product) : void {
-    this.chart.push(product);
-    product.bought = true;
-    this.update();
-  }
-
-  removeProductFromChart(product: Product) : void {
-    product.bought = false;
-    const index = this.chart.indexOf(product, 0);
-        if (index > -1)
-            this.chart.splice(index, 1);
-    this.update();
-  }
-
-  buyProductsInChart() : void {
-
   }
 }
