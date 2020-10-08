@@ -16,10 +16,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserLoginComponent } from './user-login/user-login.component';
-import { ProductShopComponent } from './product-shop/product-shop.component';
-import { SellProductsComponent } from './product-shop/sell-products/sell-products.component';
-import { ProductsCatalogComponent } from './product-shop/products-catalog/products-catalog.component';
-import { ShoppingChartComponent } from './product-shop/shopping-chart/shopping-chart.component';
+import { SellProductsComponent } from './sell-products/sell-products.component';
+import { ShopCatalogueComponent } from './shop-catalogue/shop-catalogue.component';
+import { ShoppingChartComponent } from './shopping-chart/shopping-chart.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import {MatRadioModule} from '@angular/material/radio';
 
@@ -29,9 +28,8 @@ import {MatRadioModule} from '@angular/material/radio';
     TodoListComponent,
     TodoItemComponent,
     UserLoginComponent,
-    ProductShopComponent,
     SellProductsComponent,
-    ProductsCatalogComponent,
+    ShopCatalogueComponent,
     ShoppingChartComponent,
     UserRegistrationComponent
   ],

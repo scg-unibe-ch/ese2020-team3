@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
-import { ProductShopComponent } from '../product-shop.component';
 
 @Component({
   selector: 'app-sell-products',
@@ -9,15 +8,15 @@ import { ProductShopComponent } from '../product-shop.component';
 })
 export class SellProductsComponent implements OnInit {
 
-  @Input() shop: ProductShopComponent;
-
   loggedIn = false;
   userToken = '';
   userName = '';
 
-  productName = '';
-  productDescription = '';
-  productPrice = 0;
+  title: string;
+  type: string;
+  rent: boolean;
+  description: string;
+  price: number;
 
   constructor() { }
 
@@ -27,9 +26,11 @@ export class SellProductsComponent implements OnInit {
   }
 
   resetAttributes(){
-    this.productName = '';
-    this.productDescription = '';
-    this.productPrice = 1;
+    this.title = '';
+    this.type = 'Product';
+    this.rent = false;
+    this.description = '';
+    this.price = 0;
   }
 
   update() {
@@ -39,17 +40,8 @@ export class SellProductsComponent implements OnInit {
   }
 
   submitProduct() {
-
-    //Product to submit
-    var product = new Product(this.userToken, this.userName, this.productName, this.productDescription, this.productPrice, false);
     
-    //TODO: STORE PRODUCT IN BACKEND CATALOGUE
-
-    //Reset form fields and give feedback
     this.resetAttributes();
     window.alert('Your Product has been submitted!');
-
-    //Add product to catalogue
-    this.shop.catalogue.products.push(product);
   }
 }

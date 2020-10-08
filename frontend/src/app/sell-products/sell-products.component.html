@@ -1,0 +1,48 @@
+<mat-card id="input-form">
+
+    <h3>{{rent? 'Rent' : 'Sell'}} a {{type}}</h3>
+
+    <!--TYPE-->
+    Type: 
+    <select color="primary" [(ngModel)]="type" name="type">
+        <option value="Product">Product</option>
+        <option value="Service">Service</option>
+    </select>
+
+    <!--RENT-->
+    <mat-checkbox [(ngModel)]="rent" title="Do you want to rent your {{type}} for a certain time instead of selling it directly?">
+        <mat-label>Rent</mat-label>
+    </mat-checkbox>
+
+    <!--TITLE-->
+    <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="title" name="title" title="Provide a title for your {{type}}">
+    </mat-form-field>
+
+    <!--DESCRIPTION-->
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"
+            [(ngModel)]="description"
+            name="description"
+            title="Describe the {{type}} you want to {{rent? 'rent' : 'sell'}}">
+        </textarea>
+    </mat-form-field>
+
+    <!--COSTS-->
+    <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput type="number" min="1" oninput="validity.valid||(value='');" [(ngModel)]="price" name="price">
+    </mat-form-field>
+
+    <!--SUBMISSION-->
+    <button mat-flat-button color="primary" (click)="submitProduct()">
+        Done
+    </button>
+
+</mat-card>
