@@ -1,7 +1,8 @@
 cd frontend
-start "Frontend" ng serve --open
+start "Frontend" npm run dev
 cd..
-cd backend
-start "Backend" npm run tsc 
 sleep 10
-start "Backend" node build/server.js
+cd backend
+start "Backend" npm run dev 
+
+
