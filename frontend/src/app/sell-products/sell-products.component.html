@@ -22,7 +22,7 @@
     <!--TITLE-->
     <mat-form-field id="title">
         <mat-label>Title</mat-label>
-        <input matInput [(ngModel)]="title" name="title" title="Provide a title for your {{type}}">
+        <input matInput [(ngModel)]="title" maxLength=50 name="title" title="Provide a title for your {{type}}">
     </mat-form-field>
 
     <!--DESCRIPTION-->
@@ -33,6 +33,7 @@
             #autosize="cdkTextareaAutosize"
             cdkAutosizeMinRows="1"
             cdkAutosizeMaxRows="5"
+            maxlength=100
             [(ngModel)]="description"
             name="description"
             title="Describe the {{type}} you want to {{rent? 'rent' : 'sell'}}">
@@ -47,12 +48,12 @@
 
     <mat-form-field>
         <mat-label>Location</mat-label>
-        <input matInput [(ngModel)]="location" name="location" title="">
+        <input matInput [(ngModel)]="location" maxlength=50 name="location" title="">
     </mat-form-field>
 
     <!--SUBMISSION-->
     <button id="submit" mat-flat-button color="primary" (click)="submitProduct()">
-        Done
+        Submit {{type}}
     </button>
 
 </mat-card>

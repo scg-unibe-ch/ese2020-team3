@@ -29,7 +29,7 @@ import {ShopCatalogueComponent} from "./shop-catalogue/shop-catalogue.component"
 const routes: Routes= [
   {path: 'Login', component: UserLoginComponent},
   {path: 'Registration', component: UserRegistrationComponent},
-  {path: '', component: ShopCatalogueComponent}
+  {path: '', component: SellProductsComponent}
 ]
 
 @NgModule({

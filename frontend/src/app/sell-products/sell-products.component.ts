@@ -22,7 +22,6 @@ export class SellProductsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.update();
     this.resetAttributes();
   }
 
@@ -35,15 +34,24 @@ export class SellProductsComponent implements OnInit {
     this.price = 0;
   }
 
-  update() {
-    this.userToken = localStorage.getItem('userToken');
-    this.userName = localStorage.getItem('userName');
-    this.loggedIn = !!(this.userToken);
+  submitProduct() {
+
+    if (!this.settingsAreValid()){
+      window.alert("Make sure you privide title, description, rent and a positive price!")
+    } else {
+
+      //TODO
+      
+      this.resetAttributes();
+      window.alert('Your '+this.type+' has been submitted!');
+    }
   }
 
-  submitProduct() {
-    
-    this.resetAttributes();
-    window.alert('Your Product has been submitted!');
+  settingsAreValid(): boolean {
+    return !!(this.title)
+          && !!(this.type)
+          && !!(this.location)
+          && !!(this.description)
+          && this.price > 0
   }
 }
