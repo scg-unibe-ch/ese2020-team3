@@ -1,27 +1,32 @@
-<mat-card id="input-form">
+<mat-card id="main">
 
-    <h3>{{rent? 'Rent' : 'Sell'}} a {{type}}</h3>
+    <h3 id="form-title">{{rent? 'Rent' : 'Sell'}} a {{type}}</h3>
 
     <!--TYPE-->
     Type: 
-    <select color="primary" [(ngModel)]="type" name="type">
+    <select id="type-select" color="primary" [(ngModel)]="type" name="type">
         <option value="Product">Product</option>
         <option value="Service">Service</option>
     </select>
 
     <!--RENT-->
-    <mat-checkbox [(ngModel)]="rent" title="Do you want to rent your {{type}} for a certain time instead of selling it directly?">
-        <mat-label>Rent</mat-label>
-    </mat-checkbox>
+    <div id="rent-form">
+    <mat-label id="rent-label">Sell or rent:</mat-label>
+    <mat-radio-group id="rent-radio" [(ngModel)]="rent">
+        <mat-radio-button [value]=false checked>Sell</mat-radio-button>
+        <mat-radio-button [value]=true>Rent</mat-radio-button>
+    </mat-radio-group>
+    </div>
+      
 
     <!--TITLE-->
-    <mat-form-field>
+    <mat-form-field id="title">
         <mat-label>Title</mat-label>
         <input matInput [(ngModel)]="title" name="title" title="Provide a title for your {{type}}">
     </mat-form-field>
 
     <!--DESCRIPTION-->
-    <mat-form-field>
+    <mat-form-field id="description">
         <mat-label>Description</mat-label>
         <textarea matInput
             cdkTextareaAutosize
@@ -35,13 +40,18 @@
     </mat-form-field>
 
     <!--COSTS-->
-    <mat-form-field>
-        <mat-label>Price</mat-label>
+    <mat-form-field id="price">
+        <mat-label>Price {{rent? '(per hour)' : ''}}</mat-label>
         <input matInput type="number" min="1" oninput="validity.valid||(value='');" [(ngModel)]="price" name="price">
     </mat-form-field>
 
+    <mat-form-field>
+        <mat-label>Location</mat-label>
+        <input matInput [(ngModel)]="location" name="location" title="">
+    </mat-form-field>
+
     <!--SUBMISSION-->
-    <button mat-flat-button color="primary" (click)="submitProduct()">
+    <button id="submit" mat-flat-button color="primary" (click)="submitProduct()">
         Done
     </button>
 

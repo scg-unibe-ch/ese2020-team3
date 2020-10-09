@@ -14,6 +14,7 @@ export class SellProductsComponent implements OnInit {
 
   title: string;
   type: string;
+  location: string;
   rent: boolean;
   description: string;
   price: number;
@@ -28,6 +29,7 @@ export class SellProductsComponent implements OnInit {
   resetAttributes(){
     this.title = '';
     this.type = 'Product';
+    this.location = '';
     this.rent = false;
     this.description = '';
     this.price = 0;

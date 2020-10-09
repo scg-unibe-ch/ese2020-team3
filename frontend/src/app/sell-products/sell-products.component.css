@@ -1,6 +1,22 @@
-mat-form-field, mat-checkbox {
+#main {
+    background-color: rgb(226, 231, 241);
+}
+
+#form-title {
+    font-size: large;
+}
+
+mat-form-field, mat-checkbox, #rent-form {
     width: 20%;
     display: block;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+#rent-radio {
+    display: block;
+}
+
+mat-radio-button {
+    margin-right: 30px;
 }
