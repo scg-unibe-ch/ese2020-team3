@@ -23,6 +23,12 @@
   <button mat-flat-button color="primary" (click)="accessSecuredEndpoint()">Access Secure Endpoint (only for logged in users)</button>
   {{ secureEndpointResponse }}>
   </mat-card>
+  <p>
+    You haven't registered yet?
+    <button  routerLink="/Registration" mat-button color="primary" type="submit">
+      register
+    </button>
+  </p>
   </body>
 
 
