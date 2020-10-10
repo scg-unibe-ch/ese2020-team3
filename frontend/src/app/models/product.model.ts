@@ -1,11 +1,13 @@
 export class Product {
 
     constructor(
-      public ownerToken: string, //Token of seller
-      public ownerName: string, //Name of seller
-      public name: string,
+      public title: string,
       public description: string,
-      public price: number,
-      public inChart: boolean
+      public ownerId: number,
+      public ownerName: string,
+      public state: string,
+      public rent: boolean,
+      public location: string,
+      public price: number
     ) {}
   }

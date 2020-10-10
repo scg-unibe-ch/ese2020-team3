@@ -4,28 +4,23 @@
 <div *ngFor="let product of products">
     <mat-card>
 
-        <!--You offer the product-->
-        <h3 *ngIf="product.ownerToken==userToken">
-            You offer {{product.name}}
-        </h3>
-
-        <!--Someone else is offering the product-->
-        <h3 *ngIf="product.ownerToken!=userToken">
-            {{product.ownerName}} offers {{product.name}} {{product.inChart ? '(Already Bought)' : ''}}
+        <!--Who offers what-->
+        <h3>
+            {{product.ownerName}} offers {{product.title}}
         </h3>
 
         <!--Product information-->
         <p>{{product.description}}</p>
         <p>Price: {{product.price}} Points</p>
 
-        <!--Button to add the product to the Shopping chart. (Not accessible by the owner of the product!)-->
-        <button *ngIf="loggedIn && !product.inChart" (click)="addProductToChart(product)">
-            As User: Add to my Chart
+        <!--Button to add the product to the Shopping chart.-->
+        <button (click)="addProductToChart(product)">
+            Add to my Chart
         </button>
 
-        <!--Button to remove product from catalog. Only accessible by the owner of the product!-->
-        <button *ngIf="loggedIn && userToken==product.ownerToken && !product.inChart" (click)="removeProduct(product)">
-            As Owner: Remove from Catalogue
+        <!--Button to remove product from catalog-->
+        <button (click)="removeProduct(product)">
+            Remove from Catalogue
         </button>
 
     </mat-card>

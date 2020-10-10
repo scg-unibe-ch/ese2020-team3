@@ -41,6 +41,7 @@ export class UserLoginComponent implements OnInit {
       localStorage.setItem('userToken', res.token);
       localStorage.setItem('userName', res.user.userName);
       localStorage.setItem('userId', res.user.userId);
+      localStorage.setItem('userWallet', res.user.wallet);
 
       this.checkUserStatus();
     });
@@ -51,6 +52,7 @@ export class UserLoginComponent implements OnInit {
     localStorage.removeItem('userToken');
     localStorage.removeItem('userName');
     localStorage.removeItem('userId');
+    localStorage.removeItem('userWallet');
     this.password = '';
 
     this.checkUserStatus();

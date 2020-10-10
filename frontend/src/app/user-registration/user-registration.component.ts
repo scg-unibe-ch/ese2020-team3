@@ -55,7 +55,7 @@ export class UserRegistrationComponent implements OnInit {
         city: rf.get("city").value,
         country: rf.get("country").value,
         wallet: 1000, //Starting cash
-        isAdmin: true
+        isAdmin: false
       }).subscribe((res: any) => {
 
         //TODO: USERNAME ALREADY EXISTS
