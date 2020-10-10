@@ -40,6 +40,7 @@ export class UserLoginComponent implements OnInit {
       // Set user data in local storage
       localStorage.setItem('userToken', res.token);
       localStorage.setItem('userName', res.user.userName);
+      localStorage.setItem('userId', res.user.userId);
 
       this.checkUserStatus();
     });
@@ -49,6 +50,7 @@ export class UserLoginComponent implements OnInit {
     // Remove user data from local storage
     localStorage.removeItem('userToken');
     localStorage.removeItem('userName');
+    this.password = '';
 
     this.checkUserStatus();
   }

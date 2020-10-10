@@ -40,26 +40,31 @@ export class UserRegistrationComponent implements OnInit {
   }
 
   register():void {
-
-    //TODO: ENSURE THAT VALUES ARE VALID
-
     var rf = this.registrationForm;
-    this.httpClient.post(environment.endpointURL + 'user/register', {
-      userEmail: rf.get("email").value,
-      userFirstName: rf.get("firstname").value,
-      userLastName: rf.get("lastname").value,
-      userName: rf.get("username").value,
-      password: rf.get("password").value,
-      gender: rf.get("gender").value,
-      telephoneNumber: rf.get("telephonenumber").value,
-      street: rf.get("street").value,
-      pinCode: rf.get("pincode").value,
-      city: rf.get("city").value,
-      country: rf.get("country").value,
-      wallet: 1000, //Starting cash
-      isAdmin: false
-    }).subscribe((res: any) => {
-    });
+    if (rf.valid) {
+      this.httpClient.post(environment.endpointURL + 'user/register', {
+        userEmail: rf.get("email").value,
+        userFirstName: rf.get("firstname").value,
+        userLastName: rf.get("lastname").value,
+        userName: rf.get("username").value,
+        password: rf.get("password").value,
+        gender: rf.get("gender").value,
+        telephoneNumber: rf.get("telephonenumber").value,
+        street: rf.get("street").value,
+        pinCode: rf.get("pincode").value,
+        city: rf.get("city").value,
+        country: rf.get("country").value,
+        wallet: 1000, //Starting cash
+        isAdmin: true
+      }).subscribe((res: any) => {
+
+        //TODO: USERNAME ALREADY EXISTS
+
+        window.alert('You are now registered. Please log in to enjoy the new features!');
+      });
+    } else {
+      window.alert('Please ensure that the provided information is valid!');
+    }
   }
 }
 
