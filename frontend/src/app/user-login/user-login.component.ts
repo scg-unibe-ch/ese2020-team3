@@ -50,6 +50,7 @@ export class UserLoginComponent implements OnInit {
     // Remove user data from local storage
     localStorage.removeItem('userToken');
     localStorage.removeItem('userName');
+    localStorage.removeItem('userId');
     this.password = '';
 
     this.checkUserStatus();
