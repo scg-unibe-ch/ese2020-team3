@@ -8,11 +8,27 @@
 
 <nav mat-tab-nav-bar>
 
-  <a mat-tab-link routerLink="">Home</a>
-  <a mat-tab-link routerLink="Login">User Login</a>
-  <a mat-tab-link routerLink="Registration">User Registration</a>
+  <a mat-tab-link
+     routerLink=""
+     routerLinkActive
+     #rla1="routerLinkActive"
+     [routerLinkActiveOptions]="{exact:true}"
+     [active]="rla1.isActive">Home</a>
+  <a mat-tab-link
+     routerLink="Login"
+     routerLinkActive
+     [routerLinkActiveOptions]="{exact:true}"
+     #rla2="routerLinkActive"
+     [active]="rla2.isActive">User Login</a>
+  <a mat-tab-link
+     routerLink="Registration"
+     routerLinkActive
+     [routerLinkActiveOptions]="{exact:true}"
+     #rla3="routerLinkActive"
+     [active]="rla3.isActive">User Registration</a>
 
 </nav>
+
 
 
 <router-outlet></router-outlet>
