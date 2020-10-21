@@ -4,7 +4,9 @@ import { TodoItemController } from './controllers/todoitem.controller';
 import { TodoListController } from './controllers/todolist.controller';
 import { UserController } from './controllers/user.controller';
 import { SecuredController } from './controllers/secured.controller';
+import { ProductController} from './controllers/product.controller';
 import { Sequelize } from 'sequelize';
+import { Product} from './models/product.model';
 import { TodoList } from './models/todolist.model';
 import { TodoItem } from './models/todoitem.model';
 import { User } from './models/user.model';
@@ -22,6 +24,7 @@ export class Server {
 
         TodoItem.initialize(this.sequelize); // creates the tables if they dont exist
         TodoList.initialize(this.sequelize);
+        Product.initialize(this.sequelize);
         TodoItem.createAssociations();
         TodoList.createAssociations();
         User.initialize(this.sequelize);
@@ -56,6 +59,7 @@ export class Server {
             .use('/todoitem', TodoItemController)   // any request on this path is forwarded to the TodoItemController
             .use('/todolist', TodoListController)
             .use('/user', UserController)
+            .use('/products', ProductController)
             .use('/secured', SecuredController)
             .options('*', cors(options))
             .use(express.static('./src/public'))
