@@ -42,6 +42,7 @@ export class UserLoginComponent implements OnInit {
       localStorage.setItem('userName', res.user.userName);
       localStorage.setItem('userId', res.user.userId);
       localStorage.setItem('userWallet', res.user.wallet);
+      localStorage.setItem('isAdmin', res.user.isAdmin);
 
       this.checkUserStatus();
     });
@@ -53,6 +54,7 @@ export class UserLoginComponent implements OnInit {
     localStorage.removeItem('userName');
     localStorage.removeItem('userId');
     localStorage.removeItem('userWallet');
+    localStorage.removeItem('isAdmin');
     this.password = '';
 
     this.checkUserStatus();

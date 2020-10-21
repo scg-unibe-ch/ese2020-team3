@@ -23,13 +23,16 @@ import {MatRadioModule} from '@angular/material/radio';
 import {Routes, RouterModule} from "@angular/router";
 import { HomeComponent } from './home/home.component';
 import {ShopCatalogueComponent} from "./shop-catalogue/shop-catalogue.component";
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 
 
 const routes: Routes= [
   {path: 'Login', component: UserLoginComponent},
   {path: 'Registration', component: UserRegistrationComponent},
-  {path: '', component: SellProductsComponent}
+  {path: '', component: WelcomePageComponent},
+  {path: 'Shop', component: ShopCatalogueComponent},
+  {path: 'Sell', component: SellProductsComponent}
 ]
 
 @NgModule({
@@ -42,7 +45,8 @@ const routes: Routes= [
     ShoppingChartComponent,
     UserLoginComponent,
     UserRegistrationComponent,
-    HomeComponent
+    HomeComponent,
+    WelcomePageComponent
   ],
   imports: [
     BrowserModule,

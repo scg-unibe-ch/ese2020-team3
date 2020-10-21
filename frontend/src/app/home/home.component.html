@@ -1,33 +1,54 @@
-<mat-toolbar color="primary">
+<div class="main">
+
+<mat-toolbar class="topspan">
   <mat-toolbar-row>
-    <span>ESE-2020 Frontend Scaffolding</span>
+    <span class="span-title">T3AM</span>
+    <span class="span-info">{{loggedInText()}}</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
 
 
-<nav mat-tab-nav-bar>
+<nav class = "topnav" mat-tab-nav-bar>
 
-  <a mat-tab-link
+  <a class="link" id="home" mat-tab-link
      routerLink=""
      routerLinkActive
      #rla1="routerLinkActive"
      [routerLinkActiveOptions]="{exact:true}"
      [active]="rla1.isActive">Home</a>
-  <a mat-tab-link
-     routerLink="Login"
+
+  <a class="link" id="shop" mat-tab-link
+     routerLink="Shop"
      routerLinkActive
-     [routerLinkActiveOptions]="{exact:true}"
      #rla2="routerLinkActive"
-     [active]="rla2.isActive">User Login</a>
-  <a mat-tab-link
-     routerLink="Registration"
+     [routerLinkActiveOptions]="{exact:true}"
+     [active]="rla2.isActive">Shop</a>
+
+  <a class="link" id="sell" mat-tab-link
+     routerLink="Sell"
      routerLinkActive
      [routerLinkActiveOptions]="{exact:true}"
      #rla3="routerLinkActive"
-     [active]="rla3.isActive">User Registration</a>
+     [active]="rla3.isActive">My offers</a>
+
+  <a class="link" id="login" mat-tab-link
+     routerLink="Login"
+     routerLinkActive
+     [routerLinkActiveOptions]="{exact:true}"
+     #rla4="routerLinkActive"
+     [active]="rla4.isActive">Login</a>
+
+  <a class="link" id="registration" mat-tab-link
+     routerLink="Registration"
+     routerLinkActive
+     [routerLinkActiveOptions]="{exact:true}"
+     #rla5="routerLinkActive"
+     [active]="rla5.isActive">Registration</a>
 
 </nav>
+
+</div>
 
 
 

@@ -58,8 +58,6 @@ export class UserRegistrationComponent implements OnInit {
         isAdmin: false
       }).subscribe((res: any) => {
 
-        //TODO: USERNAME ALREADY EXISTS
-
         window.alert('You are now registered. Please log in to enjoy the new features!');
       });
     } else {

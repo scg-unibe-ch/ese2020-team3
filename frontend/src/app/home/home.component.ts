@@ -12,4 +12,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  loggedInText(): string {
+    return !!(localStorage.getItem('userToken'))? "Logged in as: " + localStorage.getItem('userName') : "Not logged in";
+  }
 }
