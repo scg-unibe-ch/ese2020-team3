@@ -29,9 +29,18 @@
     color: whitesmoke;
     background-color: red;
     border: 3px solid whitesmoke ;
+    height: 30px;
+    letter-spacing: 2px;
+}
+
+.nav-right {
+    width: 100%;
+    text-align: right;
 }
 
 .link:hover {
     color: white;
     border: 5px solid white ;
+    font-size: medium;
+    letter-spacing: 1px;
 }

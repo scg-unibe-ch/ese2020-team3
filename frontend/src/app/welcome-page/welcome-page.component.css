@@ -2,19 +2,35 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    --clr-primary: 0, 0, 0;
+    --clr-secondary: 200, 0, 0;
+    --clr-tertiary: 255, 255, 255;
+    
+}
+
+#main {
+    height: 80vh;
+    --gradient-opacity: 0.5;
+    background: linear-gradient(120deg,
+        rgba(var(--clr-secondary), var(--gradient-opacity)),
+        rgba(var(--clr-primary), var(--gradient-opacity)),
+        rgba(var(--clr-secondary), var(--gradient-opacity)));
 }
 
 #landing {
     min-height: 80vh;
-    background-image: url("../../assets/under_construction.jpg"), linear-gradient(135deg, rgba(200,0,0,0.5), rgba(0,0,0,0.5));;
+    background-image: url("../../assets/under_construction.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 #big-title {
-    color: white;
+    color: rgb(var(--clr-tertiary));
     text-align: center;
     transform: translate(0, 10rem);
+    text-shadow: rgb(var(--clr-primary)) 0 0 20px;
     font-size: 5rem;
+    letter-spacing: 1rem;
 }
