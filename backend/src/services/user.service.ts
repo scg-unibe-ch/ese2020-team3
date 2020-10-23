@@ -8,21 +8,7 @@ export class UserService {
     public register(user: UserAttributes): Promise<UserAttributes> {
         const saltRounds = 12;
         user.password = bcrypt.hashSync(user.password, saltRounds); // hashes the password, never store passwords as plaintext
-
-        // we check if the username and the email is already taken
-        if (User.findOne({where: {userName: user.userName}}) != null) {
-            // username taken, we reject it
-            return Promise.reject({ message: 'Username already taken' });
-        } else {
-            // check if the mail is taken
-            if (User.findOne({where: {userEmail: user.userEmail}}) != null) {
-                // email taken, we reject it
-                return Promise.reject({ message: 'Email already taken' });
-            } else {
-                // we can create the new user
-                return User.create(user).then(inserted => Promise.resolve(inserted)).catch(err => Promise.reject(err));
-            }
-        }
+        return User.create(user).then(inserted => Promise.resolve(inserted)).catch(err => Promise.reject(err));
     }
 
     public login(loginRequestee: LoginRequest): Promise<User | LoginResponse> {

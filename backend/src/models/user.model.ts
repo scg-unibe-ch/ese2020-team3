@@ -45,16 +45,21 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
                 },
                 userEmail: {
                     type: DataTypes.STRING,
+                    allowNull: false,
+                    unique: true
                 },
                 userFirstName: {
                     type: DataTypes.STRING,
+                    allowNull: false
                 },
                 userLastName: {
                     type: DataTypes.STRING,
+                    allowNull: false
                 },
                 userName: {
                     type: DataTypes.STRING,
-                    allowNull: false
+                    allowNull: false,
+                    unique: true
                 },
                 password: {
                     type: DataTypes.STRING,
