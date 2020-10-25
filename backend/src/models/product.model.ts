@@ -8,7 +8,9 @@ export interface ProductAttributes {
     title: string;
     type: string;
     location: string;
-    rent: boolean;
+    sell_lend: string;
+    deliverable: boolean;
+    status: string;
     description: string;
     price: number;
     userId: number;
@@ -25,7 +27,9 @@ export class Product extends Model<ProductAttributes, ProductAttributes> impleme
     title!: string;
     type!: string;
     location!: string;
-    rent!: boolean;
+    sell_lend!: string;
+    deliverable!: boolean;
+    status!: string;
     description!: string;
     price!: number;
     userId!: number;
@@ -53,8 +57,15 @@ export class Product extends Model<ProductAttributes, ProductAttributes> impleme
                     type: DataTypes.STRING,
                     allowNull: false
                 },
-                rent: {
+                sell_lend: {
+                    type: DataTypes.STRING,
+                    allowNull: false
+                },
+                deliverable: {
                     type: DataTypes.BOOLEAN,
+                },
+                status: {
+                    type: DataTypes.STRING,
                     allowNull: false
                 },
                 description: {
@@ -67,6 +78,7 @@ export class Product extends Model<ProductAttributes, ProductAttributes> impleme
                 },
                 userId: {
                     type: DataTypes.INTEGER,
+                    allowNull: false
                 }
             },
             { sequelize, tableName: 'products' }
