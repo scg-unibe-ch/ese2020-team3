@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-sell-products',
@@ -12,26 +14,16 @@ export class SellProductsComponent implements OnInit {
   userToken = '';
   userName = '';
 
-  title: string;
-  type: string;
-  location: string;
-  rent: boolean;
-  description: string;
-  price: number;
+  product: Product;
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     this.resetAttributes();
   }
 
   resetAttributes(){
-    this.title = '';
-    this.type = 'Product';
-    this.location = '';
-    this.rent = false;
-    this.description = '';
-    this.price = 0;
+    this.product = new Product('', 'Product', '', parseInt(localStorage.getItem('userId')), false, '', 0, 'no');
   }
 
   submitProduct() {
@@ -40,18 +32,31 @@ export class SellProductsComponent implements OnInit {
       window.alert("Make sure you provide title, description, rent, location and a positive price!")
     } else {
 
-      //TODO
+      this.product.userId = parseInt(localStorage.getItem('userId'));
+      this.httpClient.post(environment.endpointURL + 'products', {
+        title: this.product.title,
+        description: this.product.description,
+        location: this.product.location,
+        type: this.product.type,
+        price: this.product.price,
+        rent: this.product.rent,
+        userId: this.product.userId,
+        authorized: 'no'
+      }).subscribe((product: any) => {
+      });
       
+      window.alert('Your '+this.product.type+' has been submitted!');
       this.resetAttributes();
-      window.alert('Your '+this.type+' has been submitted!');
     }
   }
 
   settingsAreValid(): boolean {
-    return !!(this.title)
-          && !!(this.type)
-          && !!(this.location)
-          && !!(this.description)
-          && this.price > 0
+    return !!(this.product.title)
+          && !!(this.product.type)
+          && !!(this.product.location)
+          && !!(this.product.description)
+          && this.product.userId >= 0
+          && this.product.price > 0
+          && this.product.userId == parseInt(localStorage.getItem('userId'));
   }
 }

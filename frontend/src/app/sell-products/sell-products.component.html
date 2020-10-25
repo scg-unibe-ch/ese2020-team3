@@ -1,10 +1,10 @@
 <mat-card id="main">
 
-    <h3 id="form-title">{{rent? 'Rent' : 'Sell'}} a {{type}}</h3>
+    <h3 id="form-title">{{product.rent? 'Rent' : 'Sell'}} a {{product.type}}</h3>
 
     <!--TYPE-->
     Type: 
-    <select id="type-select" color="primary" [(ngModel)]="type" name="type">
+    <select id="type-select" color="primary" [(ngModel)]="product.type" name="type">
         <option value="Product">Product</option>
         <option value="Service">Service</option>
     </select>
@@ -12,7 +12,7 @@
     <!--RENT-->
     <div id="rent-form">
     <mat-label id="rent-label">Sell or rent:</mat-label>
-    <mat-radio-group id="rent-radio" [(ngModel)]="rent">
+    <mat-radio-group id="rent-radio" [(ngModel)]="product.rent">
         <mat-radio-button [value]=false checked>Sell</mat-radio-button>
         <mat-radio-button [value]=true>Rent</mat-radio-button>
     </mat-radio-group>
@@ -22,7 +22,7 @@
     <!--TITLE-->
     <mat-form-field id="title">
         <mat-label>Title</mat-label>
-        <input matInput [(ngModel)]="title" maxLength=50 name="title" title="Provide a title for your {{type}}">
+        <input matInput [(ngModel)]="product.title" maxLength=50 name="title" title="Provide a title for your {{product.type}}">
     </mat-form-field>
 
     <!--DESCRIPTION-->
@@ -34,26 +34,27 @@
             cdkAutosizeMinRows="1"
             cdkAutosizeMaxRows="5"
             maxlength=100
-            [(ngModel)]="description"
+            [(ngModel)]="product.description"
             name="description"
-            title="Describe the {{type}} you want to {{rent? 'rent' : 'sell'}}">
+            title="Describe the {{product.type}} you want to {{product.rent? 'rent' : 'sell'}}">
         </textarea>
     </mat-form-field>
 
     <!--COSTS-->
     <mat-form-field id="price">
-        <mat-label>Price {{rent? '(per hour)' : ''}}</mat-label>
-        <input matInput type="number" min="1" oninput="validity.valid||(value='');" [(ngModel)]="price" name="price">
+        <mat-label>Price {{product.rent? '(per hour)' : ''}}</mat-label>
+        <input matInput type="number" min="1" oninput="validity.valid||(value='');" [(ngModel)]="product.price" name="price">
     </mat-form-field>
 
+    <!--LOCATION-->
     <mat-form-field>
         <mat-label>Location</mat-label>
-        <input matInput [(ngModel)]="location" maxlength=50 name="location" title="">
+        <input matInput [(ngModel)]="product.location" maxlength=50 name="location" title="">
     </mat-form-field>
 
     <!--SUBMISSION-->
     <button id="submit" mat-flat-button color="primary" (click)="submitProduct()">
-        Submit {{type}}
+        Submit {{product.type}}
     </button>
 
 </mat-card>
