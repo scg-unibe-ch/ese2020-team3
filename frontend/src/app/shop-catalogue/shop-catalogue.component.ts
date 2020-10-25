@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../models/product.model';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-products-catalog',
@@ -8,28 +10,20 @@ import { Product } from '../models/product.model';
 })
 export class ShopCatalogueComponent implements OnInit {
 
-  loggedIn = false;
-  userIsAdmin = false;
-  userToken = '';
-  userName = '';
-  products: Product[] = [];
+  products = [];
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
+    this.loadProducts();
   }
 
-  updateProducts(): void {
-
-  }
-  
-  removeProduct(product: Product): void {
-    
-    this.updateProducts();
+  loadProducts() {
+    //TODO
   }
 
-  addProductToChart(product: Product): void {
-    
-    this.updateProducts();
+  buyProduct(product: Product) {
+
   }
+
 }

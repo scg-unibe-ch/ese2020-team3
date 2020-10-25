@@ -1,24 +1,19 @@
-<h3>Catalogue works!</h3>
+<h3>Catalogue doesnt work!</h3>
 <div *ngFor="let product of products">
     <mat-card>
 
         <!--Who offers what-->
         <h3>
-            {{product.ownerName}} offers {{product.title}}
+            {{product.title}}
         </h3>
 
         <!--Product information-->
         <p>{{product.description}}</p>
         <p>Price: {{product.price}} Points</p>
 
-        <!--Button to add the product to the Shopping chart.-->
-        <button (click)="addProductToChart(product)">
-            Add to my Chart
-        </button>
-
-        <!--Button to remove product from catalog-->
-        <button (click)="removeProduct(product)">
-            Remove from Catalogue
+        <!--Button to buy the product.-->
+        <button (click)="buyProduct(product)">
+            Buy
         </button>
 
     </mat-card>

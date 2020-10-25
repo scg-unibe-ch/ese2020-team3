@@ -2,24 +2,18 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-    --clr-primary: 0, 0, 0;
-    --clr-secondary: 200, 0, 0;
-    --clr-tertiary: 255, 255, 255;
-    
 }
 
 #main {
-    height: 80vh;
-    --gradient-opacity: 0.5;
-    background: linear-gradient(120deg,
-        rgba(var(--clr-secondary), var(--gradient-opacity)),
-        rgba(var(--clr-primary), var(--gradient-opacity)),
-        rgba(var(--clr-secondary), var(--gradient-opacity)));
+    position: absolute;
+    top: 12%;
+    left: 0;
+    height: 88%;
+    width: 100%;
 }
 
 #landing {
-    min-height: 80vh;
+    
     
     background-size: cover;
     background-repeat: no-repeat;
@@ -27,10 +21,10 @@
 }
 
 #big-title {
-    color: rgb(var(--clr-tertiary));
+    color: var(--clr-tertiary);
     text-align: center;
     transform: translate(0, 10rem);
-    text-shadow: rgb(var(--clr-primary)) 0 0 20px;
+    text-shadow: var(--clr-primary) 0 0 20px;
     font-size: 5rem;
     letter-spacing: 1rem;
 }

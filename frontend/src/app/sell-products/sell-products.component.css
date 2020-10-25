@@ -1,5 +1,11 @@
 #main {
-    background-color: rgb(226, 231, 241);
+    width: 80%;
+    position: absolute;
+    align-self: center;
+    left: 10%;
+    top: 20%;
+    background-color: var(--clr-tertiary);
+    color: var(--clr-primary);
 }
 
 #form-title {
@@ -19,4 +25,9 @@ mat-form-field, mat-checkbox, #rent-form {
 
 mat-radio-button {
     margin-right: 30px;
+}
+
+button {
+    background-color: var(--clr-secondary);
+    color: var(--clr-tertiary);
 }

@@ -7,7 +7,7 @@
 .topspan {
     text-align: center;
     color: white;
-    background-color: black;
+    background-color: var(--clr-primary);
 }
 
 .span-title {
@@ -21,14 +21,14 @@
 
 .topnav {
     overflow: hidden;
-    background-color: black;
+    background-color: var(--clr-primary);
 }
 
 .link {
     margin: 5px 5px 5px 5px;
-    color: whitesmoke;
-    background-color: red;
-    border: 3px solid whitesmoke ;
+    color: var(--clr-tertiary);
+    background-color: var(--clr-secondary);
+    border: 3px solid var(--clr-tertiary);
     height: 30px;
     letter-spacing: 2px;
 }
@@ -39,8 +39,8 @@
 }
 
 .link:hover {
-    color: white;
-    border: 5px solid white ;
+    color: var(--clr-tertiary);;
+    border: 5px solid var(--clr-tertiary); ;
     font-size: medium;
     letter-spacing: 1px;
 }

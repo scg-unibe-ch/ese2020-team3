@@ -22,7 +22,7 @@ import { UserRegistrationComponent } from './user-registration/user-registration
 import {MatRadioModule} from '@angular/material/radio';
 import {Routes, RouterModule} from "@angular/router";
 import { HomeComponent } from './home/home.component';
-import {ShopCatalogueComponent} from "./shop-catalogue/shop-catalogue.component";
+import { ShopCatalogueComponent } from "./shop-catalogue/shop-catalogue.component";
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 
@@ -46,6 +46,7 @@ const routes: Routes= [
     UserLoginComponent,
     UserRegistrationComponent,
     HomeComponent,
+    ShopCatalogueComponent,
     WelcomePageComponent
   ],
   imports: [

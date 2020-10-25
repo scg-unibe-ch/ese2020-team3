@@ -23,7 +23,7 @@ export class SellProductsComponent implements OnInit {
   }
 
   resetAttributes(){
-    this.product = new Product('', 'Product', '', parseInt(localStorage.getItem('userId')), false, '', 0, 'no');
+    this.product = new Product('', 'Product', '', parseInt(localStorage.getItem('userId')), false, '', 0, 'submitted', false, 'no');
   }
 
   submitProduct() {
@@ -39,8 +39,9 @@ export class SellProductsComponent implements OnInit {
         location: this.product.location,
         type: this.product.type,
         price: this.product.price,
-        rent: this.product.rent,
+        sell_lend: this.product.rent? 'lend' : 'sell',
         userId: this.product.userId,
+        status: 'unauthorized',
         authorized: 'no'
       }).subscribe((product: any) => {
       });

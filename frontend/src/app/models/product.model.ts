@@ -8,6 +8,8 @@ export class Product {
       public rent: boolean,
       public location: string,
       public price: number,
+      public status: string,
+      public deliverable: boolean,
       public authorized: string
     ) {}
   }
