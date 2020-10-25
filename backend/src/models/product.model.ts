@@ -4,7 +4,7 @@ import { TodoList } from './todolist.model';
 export interface ProductAttributes {
 
     productId: number;
-    authorized: boolean;
+    authorized: string;
     title: string;
     type: string;
     location: string;
@@ -23,7 +23,7 @@ export interface ProductCreationAttributes extends Optional<Product, 'productId'
 export class Product extends Model<ProductAttributes, ProductAttributes> implements ProductAttributes {
 
     productId!: number;
-    authorized!: boolean;
+    authorized!: string;
     title!: string;
     type!: string;
     location!: string;
@@ -43,7 +43,7 @@ export class Product extends Model<ProductAttributes, ProductAttributes> impleme
                     primaryKey: true
                 },
                 authorized: {
-                    type: DataTypes.BOOLEAN,
+                    type: DataTypes.STRING,
                 },
                 title: {
                     type: DataTypes.STRING,

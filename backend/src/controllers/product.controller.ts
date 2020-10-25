@@ -64,6 +64,24 @@ productController.get('/all', (req: Request, res: Response) => {
         .catch(err => res.status(500).send(err));
 });
 */
+
+productController.get('/authorized/:boolean',  (req: Request, res: Response) => {
+    const authorized = req.params.boolean;
+    Product.findAll({
+        where: Sequelize.or({
+            authorized: {[Sequelize.Op.like]: '%' + authorized + '%'}
+        })
+    })
+        .then(found => {
+            if (found != null) {
+                res.status(200).send(found);
+            } else {
+                res.sendStatus(404);
+            }
+        })
+        .catch(err => res.status(500).send(err));
+});
+
 productController.get('/all/:userId',  (req: Request, res: Response) => {
     const userId = req.params.userId;
     Product.findAll({
