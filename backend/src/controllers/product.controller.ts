@@ -37,4 +37,16 @@ productController.delete('/:id', (req: Request, res: Response) => {
         .catch(err => res.status(500).send(err));
 });
 
+productController.get('/:id', (req: Request, res: Response) => {
+    Product.findByPk(req.params.id)
+        .then(found => {
+            if (found != null) {
+                res.status(200).send(found);
+            } else {
+                res.sendStatus(404);
+            }
+        })
+        .catch(err => res.status(500).send(err));
+});
+
 export const ProductController: Router = productController;
