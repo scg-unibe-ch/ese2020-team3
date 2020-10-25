@@ -1,6 +1,7 @@
 import express from 'express';
 import { Router, Request, Response } from 'express';
 import { Product } from '../models/product.model';
+import Sequelize, {where} from 'sequelize';
 
 const productController: Router = express.Router();
 
@@ -48,5 +49,39 @@ productController.get('/:id', (req: Request, res: Response) => {
         })
         .catch(err => res.status(500).send(err));
 });
+
+// for some reason this doesnt find anything
+/*
+productController.get('/all', (req: Request, res: Response) => {
+    Product.findAll()
+        .then(found => {
+            if (found != null) {
+                res.status(200).send(found);
+            } else {
+                res.sendStatus(404);
+            }
+        })
+        .catch(err => res.status(500).send(err));
+});
+*/
+productController.get('/all/:userId',  (req: Request, res: Response) => {
+    const userId = req.params.userId;
+    Product.findAll({
+        where: Sequelize.or({
+            userId: {[Sequelize.Op.like]: userId }
+        })
+    })
+        .then(found => {
+            if (found != null) {
+                res.status(200).send(found);
+            } else {
+                res.sendStatus(404);
+            }
+        })
+        .catch(err => res.status(500).send(err));
+});
+
+
+
 
 export const ProductController: Router = productController;
