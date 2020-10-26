@@ -19,7 +19,10 @@ export class ShopCatalogueComponent implements OnInit {
   }
 
   loadProducts() {
-    //TODO
+    this.httpClient.get(environment.endpointURL + 'products/authorized/:0' + 0).subscribe((thingy: any) => {
+    }, (error: any) => {
+      window.alert("An Error occurred. The catalogue could not be loaded.");
+    });
   }
 
   buyProduct(product: Product) {
