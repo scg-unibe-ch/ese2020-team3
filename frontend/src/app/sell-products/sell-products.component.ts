@@ -53,7 +53,7 @@ export class SellProductsComponent implements OnInit {
       }), (error: any) => {
         window.alert("An Error occured. Your Product was not sent!")
       };
-      
+
       window.alert('Your '+this.product.type+' has been submitted!');
       this.resetAttributes();
     }
