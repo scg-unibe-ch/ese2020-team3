@@ -24,6 +24,7 @@ import {Routes, RouterModule} from "@angular/router";
 import { HomeComponent } from './home/home.component';
 import { ShopCatalogueComponent } from "./shop-catalogue/shop-catalogue.component";
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { ProductAuthorizationComponent } from './product-authorization/product-authorization.component';
 
 
 
@@ -32,7 +33,9 @@ const routes: Routes= [
   {path: 'Registration', component: UserRegistrationComponent},
   {path: '', component: WelcomePageComponent},
   {path: 'Shop', component: ShopCatalogueComponent},
-  {path: 'Sell', component: SellProductsComponent}
+  {path: 'Sell', component: SellProductsComponent},
+  {path: 'Authorize', component: ProductAuthorizationComponent}
+
 ]
 
 @NgModule({
@@ -47,7 +50,8 @@ const routes: Routes= [
     UserRegistrationComponent,
     HomeComponent,
     ShopCatalogueComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    ProductAuthorizationComponent
   ],
   imports: [
     BrowserModule,
