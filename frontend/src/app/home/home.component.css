@@ -15,8 +15,8 @@
 }
 
 .span-info {
-    width: 20%;
-    margin-left: 80%;
+    width: 100%;
+    text-align: right;
 }
 
 .topnav {

@@ -1,4 +1,6 @@
-<h3>Catalogue doesnt work!</h3>
+<div *ngIf="(products.length ==0 )">
+    No Products available
+</div>
 <div *ngFor="let product of products">
     <mat-card>
 

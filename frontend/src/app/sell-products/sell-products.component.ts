@@ -32,7 +32,7 @@ export class SellProductsComponent implements OnInit {
   submitProduct() {
 
     if (!this.settingsAreValid()){
-      window.alert("Make sure you provide title, description, rent, location and a positive price!")
+      window.alert("Make sure you provide title, description, location and a positive price!")
     } else {
 
       this.product.userId = parseInt(localStorage.getItem('userId'));

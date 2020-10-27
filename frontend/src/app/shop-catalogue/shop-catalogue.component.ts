@@ -12,24 +12,62 @@ export class ShopCatalogueComponent implements OnInit {
 
   products = [];
 
+  loggedIn: boolean = false;
+  userId: number = 0;
+  userWallet: number = 0;
+  userToken: string = '';
+
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
-    this.loadProducts();
+    this.update();
   }
 
+  //Load all products that are authorized and available from the backend
   loadProducts() {
-
-    //TODO: TEST
-    this.httpClient.get(environment.endpointURL + 'products/authorized/no').subscribe((data: any) => {
-      console.log(data);
+    this.products = [];
+    this.httpClient.get(environment.endpointURL + 'products/authorized/yes').subscribe((data: any) => {
+      data.forEach(product => {
+        if (product.status == 'available') {
+          this.products.push(product);
+          console.log(product);
+        }
+      });
     }, (error: any) => {
       window.alert("An Error occurred. The catalogue could not be loaded.");
     });
   }
 
-  buyProduct(product: Product) {
-
+  //Update the information for the component
+  update() {
+    this.loadProducts();
+    this.userId = parseInt(localStorage.getItem('userId'));
+    this.userWallet = parseInt(localStorage.getItem('userWallet'));
+    this.userToken = localStorage.getItem('userToken');
+    this.loggedIn = !!(this.userToken);
   }
 
+  buyProduct(product: Product) {
+    if (this.loginStillValid()) {
+      if (this.userHasEnoughMoney(this.userId, product.price)){
+
+      }
+    } else {
+      window.alert("An Error occured. Please refresh the page!");
+    }
+  }
+
+  //Returns whether the same person that loaded the page is logged in
+  loginStillValid():boolean {
+    return this.loggedIn && !!(localStorage.getItem('userToken'))  && this.userId == parseInt(localStorage.getItem('userId'));
+  }
+
+  userHasEnoughMoney(userId: number, money: number):boolean {
+    this.httpClient.get(environment.endpointURL + 'user' + '/:bearer ' + this.userToken).subscribe((data: any) => {
+      console.log(data)
+    }, (error: any) => {
+      window.alert("Unauthorized");
+    });
+    return false;
+  }
 }
