@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-product-authorization',
@@ -9,7 +10,10 @@ import {environment} from "../../environments/environment";
 })
 export class ProductAuthorizationComponent implements OnInit {
 
-  products: any = [];
+  products: Product[];
+
+
+  displayedColumns: string[] = ['title', 'location', 'delivarable', 'description', 'price', 'acceptorreject'];
 
 
   constructor(private httpClient: HttpClient) { }
@@ -21,8 +25,40 @@ export class ProductAuthorizationComponent implements OnInit {
 
   getProducts(){
     return this.httpClient.get(environment.endpointURL + 'products/authorized/no').subscribe((res: any) =>
-    { this.products.push(res);
-    console.log(res)});
+    {
+      console.log(res);
+      this.products = res;
+    })
+  }
+
+  authorizeProduct(product: Product){
+    product.authorized = "yes"
+    product.status = "available"
+
+
+    return this.httpClient.put(environment.endpointURL + 'products/' + product.productId, product ).subscribe((res: any) =>
+    {
+      console.log("Update:");
+      console.log(res);
+
+      //refresh page to update table
+      this.refresh()
+    })
+
+  }
+
+  rejectProduct(productId: number){
+    return this.httpClient.delete(environment.endpointURL + 'products/' + productId).subscribe((res: any) =>
+    {
+      console.log("Delete:");
+
+      //refresh page to update table
+      this.refresh()
+    })
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 
 }
