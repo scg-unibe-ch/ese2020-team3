@@ -25,6 +25,7 @@ import { HomeComponent } from './home/home.component';
 import { ShopCatalogueComponent } from "./shop-catalogue/shop-catalogue.component";
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { ProductAuthorizationComponent } from './product-authorization/product-authorization.component';
+import {MatTableModule} from "@angular/material/table";
 
 
 
@@ -53,22 +54,23 @@ const routes: Routes= [
     WelcomePageComponent,
     ProductAuthorizationComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    MatButtonModule,
-    MatListModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatTabsModule,
-    MatToolbarModule,
-    ReactiveFormsModule,
-    MatRadioModule,
-    RouterModule.forRoot(routes)
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+        MatButtonModule,
+        MatListModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatCardModule,
+        MatTabsModule,
+        MatToolbarModule,
+        ReactiveFormsModule,
+        MatRadioModule,
+        RouterModule.forRoot(routes),
+        MatTableModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
