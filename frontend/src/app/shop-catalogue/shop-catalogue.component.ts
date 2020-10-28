@@ -63,7 +63,7 @@ export class ShopCatalogueComponent implements OnInit {
   }
 
   userHasEnoughMoney(userId: number, money: number):boolean {
-    this.httpClient.get(environment.endpointURL + 'user' + '/:bearer ' + this.userToken).subscribe((data: any) => {
+    this.httpClient.get(environment.endpointURL + 'user').subscribe((data: any) => {
       console.log(data)
     }, (error: any) => {
       window.alert("Unauthorized");

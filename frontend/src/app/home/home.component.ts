@@ -13,9 +13,21 @@ export class HomeComponent implements OnInit {
   }
 
   loggedInText(): string {
-    return !!(localStorage.getItem('userToken'))?
-      "Logged in as: " + localStorage.getItem('userName') + " (" + localStorage.getItem('userWallet') + " Points)"
-    :
-      "Not logged in";
+    var text;
+    if (!!(localStorage.getItem('userToken'))) {
+      //Logged in
+      text = "Logged in as: " + localStorage.getItem('userName');
+      if (localStorage.getItem('isAdmin') == "True") {
+        //Logged in as user
+         text += " (" + localStorage.getItem('userWallet') + " Points)";
+      } else {
+        //Logged in as admin
+        text += " (Admin)";
+      }
+    } else {
+      //Not logged in
+      text = "Not logged in";
+    }
+    return text;
   }
 }
