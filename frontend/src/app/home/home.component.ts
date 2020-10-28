@@ -6,11 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  isAdmin: boolean;
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
   loggedInText(): string {
     var text;
@@ -22,6 +24,7 @@ export class HomeComponent implements OnInit {
          text += " (" + localStorage.getItem('userWallet') + " Points)";
       } else {
         //Logged in as admin
+        this.isAdmin=true;
         text += " (Admin)";
       }
     } else {

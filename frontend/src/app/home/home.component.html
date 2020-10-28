@@ -32,7 +32,8 @@
      #rla3="routerLinkActive"
      [active]="rla3.isActive">My offers</a>
 
-  <a class="link" id="authorize" mat-tab-link
+  <a *ngIf="isAdmin==true"
+     class="link" id="authorize" mat-tab-link
      routerLink="Authorize"
      routerLinkActive
      [routerLinkActiveOptions]="{exact:true}"
