@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --clr-primary: #354F60;
-  --clr-secondary: #BC0E4C;
-  --clr-tertiary: #FFC501;
+  --clr-primary: #1d296e;
+  --clr-secondary: #f1ffda;
+  --clr-tertiary: #6385bf;
 }
 
 html, body {
