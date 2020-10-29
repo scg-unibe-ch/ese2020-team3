@@ -10,13 +10,15 @@ import { Product } from '../models/product.model';
 })
 export class ProductAuthorizationComponent implements OnInit {
 
-  products: Product[];
+  isAdmin: boolean;
 
+  products: Product[];
 
   displayedColumns: string[] = ['title', 'location', 'delivarable', 'description', 'price', 'acceptorreject'];
 
 
   constructor(private httpClient: HttpClient) { }
+
 
   ngOnInit(): void {
 
