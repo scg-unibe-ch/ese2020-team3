@@ -7,9 +7,10 @@ import { Router, CanActivate } from '@angular/router';
 export class AdminGuard implements  CanActivate {
   constructor(public router: Router) {}
   canActivate(): boolean {
-    if (localStorage.getItem('isAdmin') == "false") {
+    if (localStorage.getItem('isAdmin') == "true") {
+      return true; } else {
       this.router.navigate(['']);
-      return false; } else {
+      window.alert('only for Admins')
       return true;
     }
   }
