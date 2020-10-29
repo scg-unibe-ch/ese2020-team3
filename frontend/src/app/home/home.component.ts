@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    window.alert(localStorage.getItem('isAdmin'));
   }
 
 
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
     if (!!(localStorage.getItem('userToken'))) {
       //Logged in
       text = "Logged in as: " + localStorage.getItem('userName');
-      if (localStorage.getItem('isAdmin') == "True") {
+      if (localStorage.getItem('isAdmin') == "false") {
         //Logged in as user
          text += " (" + localStorage.getItem('userWallet') + " Points)";
       } else {
