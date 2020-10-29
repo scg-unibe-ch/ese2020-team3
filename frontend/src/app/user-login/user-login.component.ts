@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-user-login',
@@ -9,6 +10,7 @@ import { environment } from '../../environments/environment';
 })
 export class UserLoginComponent implements OnInit {
 
+  user = this.dummyUser();
   userName = '';
   password = '';
 
@@ -21,6 +23,10 @@ export class UserLoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkUserStatus();
+  }
+
+  dummyUser(): User {
+    return new User(0, '', '', 0, false); 
   }
 
   checkUserStatus(): void {
@@ -44,6 +50,12 @@ export class UserLoginComponent implements OnInit {
       localStorage.setItem('userWallet', res.user.wallet);
       localStorage.setItem('isAdmin', res.user.isAdmin);
 
+      this.user.userToken = res.token;
+      this.user.userName = res.user.userName;
+      this.user.userId = res.user.userId;
+      this.user.wallet = res.user.wallet;
+      this.user.isAdmin = res.user.isAdmin;
+
       this.checkUserStatus();
     });
   }
@@ -56,6 +68,8 @@ export class UserLoginComponent implements OnInit {
     localStorage.removeItem('userWallet');
     localStorage.removeItem('isAdmin');
     this.password = '';
+
+    this.user = this.dummyUser();
 
     this.checkUserStatus();
   }

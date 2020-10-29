@@ -6,17 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  isAdmin: boolean;
+
+  isAdmin = false;
 
   constructor() { }
 
   ngOnInit(): void {
-    window.alert(localStorage.getItem('isAdmin'));
   }
 
 
   loggedInText(): string {
     var text;
+    this.isAdmin = false;
     if (!!(localStorage.getItem('userToken'))) {
       //Logged in
       text = "Logged in as: " + localStorage.getItem('userName');
