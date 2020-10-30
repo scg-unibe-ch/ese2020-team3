@@ -1,6 +1,23 @@
 <div *ngIf="(products.length ==0 )">
     No Products available
 </div>
+
+<!-- my mock page -->
+<div>
+    <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="Buy">Buy</mat-radio-button>
+        <mat-radio-button value="Rent">Rent</mat-radio-button>
+    </mat-radio-group>
+
+    <form class="search-field">
+        <mat-form-field class="example-full-width">
+            <mat-label>Search</mat-label>
+            <input matInput placeholder="What are you looking for?" value="">
+        </mat-form-field>
+    </form>
+
+</div>
+
 <div *ngFor="let product of products">
     <mat-card>
 
