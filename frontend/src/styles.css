@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/*
 :root {
   --clr-primary: #1d296e;
   --clr-secondary: #f1ffda;
@@ -29,3 +32,4 @@ body {
 .mat-form-field-wrapper {
   margin-right: 25px !important;
 }
+*/
