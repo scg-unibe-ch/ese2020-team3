@@ -28,9 +28,8 @@ import { ProductAuthorizationComponent } from './product-authorization/product-a
 import {MatTableModule} from "@angular/material/table";
 import {AdminGuard} from "./admin-guard";
 import {LoginGuard} from "./login-guard";
-
-
-
+import {MatSliderModule} from '@angular/material/slider';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 const routes: Routes= [
   {path: 'Login', component: UserLoginComponent},
@@ -72,7 +71,8 @@ const routes: Routes= [
         ReactiveFormsModule,
         MatRadioModule,
         RouterModule.forRoot(routes),
-        MatTableModule
+        MatTableModule,
+        MatSliderModule
     ],
   providers: [
     {
