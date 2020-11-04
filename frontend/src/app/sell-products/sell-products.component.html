@@ -10,8 +10,7 @@
     </select>
 
     <!--RENT-->
-    <div id="rent-form">
-    <mat-label id="rent-label">Sell or rent:</mat-label>
+    <div id="rent">
     <mat-radio-group id="rent-radio" [(ngModel)]="product.rent">
         <mat-radio-button [value]=false checked>Sell</mat-radio-button>
         <mat-radio-button [value]=true>Rent</mat-radio-button>
@@ -51,6 +50,14 @@
         <mat-label>Location</mat-label>
         <input matInput [(ngModel)]="product.location" maxlength=50 name="location" title="">
     </mat-form-field>
+
+    <!--DELIVERABLE OR PICKUP-->
+    <div id="deliverable">
+        <mat-radio-group id="deliverable-radio" [(ngModel)]="product.deliverable">
+            <mat-radio-button [value]=false checked>Pickup</mat-radio-button>
+            <mat-radio-button [value]=true>Deliverable</mat-radio-button>
+        </mat-radio-group>
+    </div>
 
     <!--SUBMISSION-->
     <button id="submit" mat-flat-button (click)="submitProduct()">

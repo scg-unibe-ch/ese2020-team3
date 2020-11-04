@@ -3,6 +3,7 @@ import { Product } from '../models/product.model';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import {FormControl} from '@angular/forms';
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-products-catalog',
@@ -13,6 +14,11 @@ import {FormControl} from '@angular/forms';
 export class ShopCatalogueComponent implements OnInit {
 
   products = [];
+  filteredProducts = [];
+  recordSizes = [5, 10, 20]; //Possible results per page
+  defaultRecords = 5; //Default records per page
+  totalRecords = 0; //Total amount
+  pageEvent: any;
 
   loggedIn: boolean = false;
   userId: number = 0;
@@ -25,6 +31,12 @@ export class ShopCatalogueComponent implements OnInit {
     this.update();
   }
 
+  onPaginateChange(data) {
+    const begin = data.pageIndex * data.pageSize;
+    const end = begin + data.pageSize;
+    this.filteredProducts = this.products.slice(begin, end);
+  }
+
   //Load all products that are authorized and available from the backend (Exclude the ones from the logged in user)
   loadProducts() {
     this.products = [];
@@ -35,6 +47,10 @@ export class ShopCatalogueComponent implements OnInit {
           console.log(product);
         }
       });
+
+      this.filteredProducts = this.products.slice(0, this.defaultRecords);
+      this.totalRecords = this.products.length;
+
     }, (error: any) => {
       window.alert("An Error occurred. The catalogue could not be loaded.");
     });
@@ -49,11 +65,9 @@ export class ShopCatalogueComponent implements OnInit {
     this.loadProducts();
   }
 
+  //TODO - Buy
   buyProduct(product: Product) {
     if (this.loginStillValid()) {
-      if (this.userHasEnoughMoney(this.userId, product.price)){
-
-      }
     } else {
       window.alert("An Error occured. Please refresh the page!");
     }
@@ -64,12 +78,5 @@ export class ShopCatalogueComponent implements OnInit {
     return this.loggedIn && !!(localStorage.getItem('userToken'))  && this.userId == parseInt(localStorage.getItem('userId'));
   }
 
-  userHasEnoughMoney(userId: number, money: number):boolean {
-    this.httpClient.get(environment.endpointURL + 'user').subscribe((data: any) => {
-      console.log(data)
-    }, (error: any) => {
-      window.alert("Unauthorized");
-    });
-    return false;
-  }
+
 }

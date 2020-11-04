@@ -22,22 +22,30 @@
     No Products available
 </div>
 
-<div *ngFor="let product of products">
-    <mat-card>
+<!--LIST PRODUCTS-->
+<table id="offers-table">
+    <tr id="offers-head">
+        <td class="table-entry">Title</td>
+        <td class="table-entry">Description</td>
+        <td class="table-entry">Location</td>
+        <td class="table-entry">Price</td>
+        <td class="table-entry">Deliverable</td>
+        <td class="table-entry">Status</td>
+        <td class="table-entry">Buy</td>
+    </tr>
+    <tr id="offers-body" *ngFor="let product of filteredProducts">
+        
+        <td class="table-entry"> {{ product.title }}</td>
+        <td class="table-entry"> {{ product.description}} </td>
+        <td class="table-entry"> {{ product.location }}</td>
+        <td class="table-entry"> {{ product.price }} Pts. </td>
+        <td class="table-entry"> {{ product.deliverable }} </td>
+        <td class="table-entry"> {{ product.status }} </td>
+        <td class="table-entry"> <button (click)="buyProduct(product)">Buy</button> </td>
+        
+    </tr>
+</table>
 
-        <!--Who offers what-->
-        <h3>
-            {{product.title}}
-        </h3>
-
-        <!--Product information-->
-        <p>{{product.description}}</p>
-        <p>Price: {{product.price}} Points</p>
-
-        <!--Button to buy the product.-->
-        <button (click)="buyProduct(product)">
-            Buy
-        </button>
-
-    </mat-card>
-</div>
+<!--PAGINATOR-->
+<mat-paginator id="paginator" [length]="totalRecords" [pageSize]="defaultRecords" [pageSizeOptions]="recordSizes" (page)="pageEvent = $event; onPaginateChange($event)">
+</mat-paginator>

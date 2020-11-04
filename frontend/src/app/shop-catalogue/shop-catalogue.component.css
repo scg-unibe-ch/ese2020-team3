@@ -4,3 +4,28 @@
   align-items: center;
   margin: auto;
 }
+
+#paginator {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+#offers-table {
+  table-layout: fixed;
+  width: 90%;
+  margin: 5%;
+  border-collapse: collapse;
+}
+
+#offers-table tr {
+  border: 1px solid black;
+}
+
+.table-entry {
+  width: 50px;
+  height: 80px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding: 10px;
+}

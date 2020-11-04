@@ -31,6 +31,7 @@ import {LoginGuard} from "./login-guard";
 import {MatSliderModule} from '@angular/material/slider';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MyOffersComponent } from './sell-products/my-offers/my-offers.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 const routes: Routes= [
   {path: 'Login', component: UserLoginComponent},
@@ -74,7 +75,8 @@ const routes: Routes= [
         MatRadioModule,
         RouterModule.forRoot(routes),
         MatTableModule,
-        MatSliderModule
+        MatSliderModule,
+        MatPaginatorModule
     ],
   providers: [
     {
