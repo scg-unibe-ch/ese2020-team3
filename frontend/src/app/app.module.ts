@@ -30,6 +30,7 @@ import {AdminGuard} from "./admin-guard";
 import {LoginGuard} from "./login-guard";
 import {MatSliderModule} from '@angular/material/slider';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { MyOffersComponent } from './sell-products/my-offers/my-offers.component';
 
 const routes: Routes= [
   {path: 'Login', component: UserLoginComponent},
@@ -55,6 +56,7 @@ const routes: Routes= [
     ShopCatalogueComponent,
     WelcomePageComponent,
     ProductAuthorizationComponent,
+    MyOffersComponent,
   ],
     imports: [
         BrowserModule,

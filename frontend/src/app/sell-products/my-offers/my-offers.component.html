@@ -1,0 +1,15 @@
+<h2>My offers</h2>
+
+<div>
+    <table>
+    <tr *ngFor="let product of products">
+      <td>{{ product.title }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.location }}</td>
+      <td>{{ product.deliverable }}</td>
+      <td>{{ product.price }} Pts.</td>
+      <td>{{ product.status }}</td>
+    </tr>
+  </table>
+</div>
+  

@@ -25,12 +25,12 @@ export class ShopCatalogueComponent implements OnInit {
     this.update();
   }
 
-  //Load all products that are authorized and available from the backend
+  //Load all products that are authorized and available from the backend (Exclude the ones from the logged in user)
   loadProducts() {
     this.products = [];
     this.httpClient.get(environment.endpointURL + 'products/authorized/yes').subscribe((data: any) => {
       data.forEach(product => {
-        if (product.status == 'available') {
+        if (product.status == 'available' && product.userId != this.userId) {
           this.products.push(product);
           console.log(product);
         }
@@ -42,11 +42,11 @@ export class ShopCatalogueComponent implements OnInit {
 
   //Update the information for the component
   update() {
-    this.loadProducts();
     this.userId = parseInt(localStorage.getItem('userId'));
     this.userWallet = parseInt(localStorage.getItem('userWallet'));
     this.userToken = localStorage.getItem('userToken');
     this.loggedIn = !!(this.userToken);
+    this.loadProducts();
   }
 
   buyProduct(product: Product) {
