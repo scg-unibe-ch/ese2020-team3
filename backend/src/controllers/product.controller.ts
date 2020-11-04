@@ -33,11 +33,13 @@ productController.put('/:id', (req: Request, res: Response) => {
 
 productController.get('/search',
     (req: Request, res: Response) => {
-        let term = '%';
+        let title = '%';
         let uplim = 10000;
         let lowlim = 0;
+        const location = '%';
+        let deliverable = '%';
     if (req.body.title != null) {
-        term = req.body.title;
+        title = req.body.title;
     }
     if (req.body.uplim != null) {
         uplim = req.body.uplim;
@@ -45,11 +47,19 @@ productController.get('/search',
     if (req.body.lowlim != null) {
         lowlim = req.body.lowlim;
     }
+    if (req.body.location != null) {
+            lowlim = req.body.lowlim;
+    }
+    if (req.body.deliverable != null) {
+        deliverable = req.body.deliverable;
+    }
 
         Product.findAll({
                 where: Sequelize.and({
                     price: {[Sequelize.Op.gte]: lowlim, [Sequelize.Op.lte]: uplim},
-                    title: {[Sequelize.Op.like]: '%' + term + '%'}
+                    title: {[Sequelize.Op.like]: '%' + title + '%'},
+                    location: {[Sequelize.Op.like]: '%' + location + '%'},
+                    deliverable: {[Sequelize.Op.is]: deliverable}
                 })
             }
 
