@@ -1,15 +1,40 @@
 <h2>My offers</h2>
 
-<div>
-    <table>
-    <tr *ngFor="let product of products">
-      <td>{{ product.title }}</td>
-      <td>{{ product.description }}</td>
-      <td>{{ product.location }}</td>
-      <td>{{ product.deliverable }}</td>
-      <td>{{ product.price }} Pts.</td>
-      <td>{{ product.status }}</td>
+<p>
+    Here you can observe and modify your submitted offers. Note that modified offers will
+    have to be accepted by an admin even if they have been acepted before!
+</p>
+
+<!--CHANGING THE PRODUCT-->
+<mat-card id="change-board" *ngIf="changingProduct.productId != -1">
+    <td class="change-entry"><input [(ngModel)] = "changingProduct.title" value ="{{ changingProduct.title }}"></td>
+    <td class="change-entry"> <input [(ngModel)] = "changingProduct.description" value="{{ changingProduct.description}}"> </td>
+    <td class="change-entry"> <input [(ngModel)] = "changingProduct.location" value="{{ changingProduct.location }}"></td>
+    <td class="change-entry"> <input [(ngModel)] = "changingProduct.price" type="number" value="{{ changingProduct.price }}"> Pts. </td>
+
+    <td class="change-entry"> <button (click)="saveChange()">Save</button> </td>
+    <td class="change-entry"> <button (click)="discardChange()">Discard</button> </td>
+</mat-card>
+
+
+<!--LISTING YOUR OFFERS-->
+<table id="offers-table">
+    <tr id="offers-head">
+        <td class="table-entry">Title</td>
+        <td class="table-entry">Description</td>
+        <td class="table-entry">Location</td>
+        <td class="table-entry">Price</td>
+        <td class="table-entry">Deliverable</td>
+        <td class="table-entry">Status</td>
+        <td class="table-entry">Change</td>
     </tr>
-  </table>
-</div>
-  
+    <tr id="offers-body" *ngFor="let product of products">
+        <td class="table-entry"> {{ product.title }}</td>
+        <td class="table-entry"> {{ product.description}} </td>
+        <td class="table-entry"> {{ product.location }}</td>
+        <td class="table-entry"> {{ product.price }} Pts. </td>
+        <td class="table-entry"> {{ product.deliverable }} </td>
+        <td class="table-entry"> {{ product.status }} </td>
+        <td class="table-entry"> <button (click)="changeProduct(product)">Change</button> </td>
+    </tr>
+</table>
