@@ -12,6 +12,19 @@ userController.post('/register',
     }
 );
 
+userController.put('/update',
+    (req: Request, res: Response) => {
+        userService.update(req.body).then(updated => res.send(updated)).catch(err => res.status(500).send(err));
+    }
+    );
+
+// TODO not yet tested
+userController.put('/calculate/:price',
+    (req: Request, res: Response) => {
+        userService.calculate(req.body, Number(req.params.price)).then(calculated => res.send(calculated)).catch(err => res.status(500).send(err));
+    }
+    );
+
 userController.post('/login',
     (req: Request, res: Response) => {
         userService.login(req.body).then(login => res.send(login)).catch(err => res.status(500).send(err));

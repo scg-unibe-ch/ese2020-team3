@@ -11,6 +11,31 @@ export class UserService {
         return User.create(user).then(inserted => Promise.resolve(inserted)).catch(err => Promise.reject(err));
     }
 
+    public calculate(user1: UserAttributes, price: number): Promise<UserAttributes> {
+        return User.findOne( {
+            where: {
+                userId: user1.userId
+            }
+        })
+            .then(user => {
+                user.set('wallet', user.wallet - price);
+                user.save();
+                return Promise.resolve(user);
+            });
+    }
+
+    public update(user1: UserAttributes): Promise<UserAttributes> {
+        // const newAttributes = user;
+        return User.findOne({
+            where: {
+                userId: user1.userId
+            }
+        })
+            .then(user => {
+                user.update(user1);
+                return Promise.resolve(user);
+            });
+    }
     public login(loginRequestee: LoginRequest): Promise<User | LoginResponse> {
         const secret = process.env.JWT_SECRET;
         return User.findOne({
