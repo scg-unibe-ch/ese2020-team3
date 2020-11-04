@@ -25,7 +25,19 @@ export class SellProductsComponent implements OnInit {
 
   //Resets the product's attributes to their default values
   resetAttributes(){
-    this.product = new Product(0, '', 'Product', '', parseInt(localStorage.getItem('userId')), false, '', 0, 'unauthorized', false, 'no');
+    this.product = new Product(
+      0,                                        //Product Id (Will be set in the backend as primary key)
+      '',                                       //Title
+      'Product',                                //Type
+      '',                                       //Description
+      parseInt(localStorage.getItem('userId')), //UserId
+      false,                                    //lend and not sell
+      '',                                       //Location
+      0,                                        //Price
+      'unauthorized',                           //Status
+      false,                                    //Deliverable
+      'no'                                      //Authorized (Approved by admin)
+    );
   }
 
   //Posts a new Product to the backend if the attributes are valid

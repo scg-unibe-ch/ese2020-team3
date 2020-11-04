@@ -1,0 +1,12 @@
+.table-entry {
+    white-space: nowrap;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#offers-table {
+    margin: 5%;
+    table-layout: fixed;
+    width: 180px;
+}

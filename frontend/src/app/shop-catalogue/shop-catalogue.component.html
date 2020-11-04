@@ -1,6 +1,27 @@
+
+<!-- my mock page -->
+<mat-card id="input-form">
+    <mat-card-content>
+        <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="Buy">Buy</mat-radio-button>
+            <mat-radio-button value="Rent">Rent</mat-radio-button>
+        </mat-radio-group>
+
+        <form class="search-field">
+            <mat-form-field class="example-full-width">
+                <mat-label>Search</mat-label>
+                <input matInput placeholder="What are you looking for?" value="">
+            </mat-form-field>
+        </form>
+
+        <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+    </mat-card-content>
+</mat-card>
+
 <div *ngIf="(products.length ==0 )">
     No Products available
 </div>
+
 <div *ngFor="let product of products">
     <mat-card>
 

@@ -26,16 +26,19 @@ import { ShopCatalogueComponent } from "./shop-catalogue/shop-catalogue.componen
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { ProductAuthorizationComponent } from './product-authorization/product-authorization.component';
 import {MatTableModule} from "@angular/material/table";
-
-
+import {AdminGuard} from "./admin-guard";
+import {LoginGuard} from "./login-guard";
+import {MatSliderModule} from '@angular/material/slider';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { MyOffersComponent } from './sell-products/my-offers/my-offers.component';
 
 const routes: Routes= [
   {path: 'Login', component: UserLoginComponent},
   {path: 'Registration', component: UserRegistrationComponent},
   {path: '', component: WelcomePageComponent},
   {path: 'Shop', component: ShopCatalogueComponent},
-  {path: 'Sell', component: SellProductsComponent},
-  {path: 'Authorize', component: ProductAuthorizationComponent}
+  {path: 'Sell', component: SellProductsComponent, canActivate: [LoginGuard]},
+  {path: 'Authorize', component: ProductAuthorizationComponent, canActivate: [AdminGuard]}
 
 ]
 
@@ -52,7 +55,8 @@ const routes: Routes= [
     HomeComponent,
     ShopCatalogueComponent,
     WelcomePageComponent,
-    ProductAuthorizationComponent
+    ProductAuthorizationComponent,
+    MyOffersComponent,
   ],
     imports: [
         BrowserModule,
@@ -69,7 +73,8 @@ const routes: Routes= [
         ReactiveFormsModule,
         MatRadioModule,
         RouterModule.forRoot(routes),
-        MatTableModule
+        MatTableModule,
+        MatSliderModule
     ],
   providers: [
     {

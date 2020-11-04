@@ -1,7 +1,8 @@
 #main {
     width: 80%;
-    position: absolute;
+    position: relative;
     align-self: center;
+    margin-top: 5%;
     left: 10%;
     top: 20%;
     background-color: var(--clr-tertiary);

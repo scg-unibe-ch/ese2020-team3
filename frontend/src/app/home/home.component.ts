@@ -7,15 +7,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  isAdmin = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+
   loggedInText(): string {
-    return !!(localStorage.getItem('userToken'))?
-      "Logged in as: " + localStorage.getItem('userName') + " (" + localStorage.getItem('userWallet') + " Points)"
-    :
-      "Not logged in";
+    var text;
+    this.isAdmin = false;
+    if (!!(localStorage.getItem('userToken'))) {
+      //Logged in
+      text = "Logged in as: " + localStorage.getItem('userName');
+      if (localStorage.getItem('isAdmin') == "false") {
+        //Logged in as user
+         text += " (" + localStorage.getItem('userWallet') + " Points)";
+      } else {
+        //Logged in as admin
+        this.isAdmin=true;
+        text += " (Admin)";
+      }
+    } else {
+      //Not logged in
+      text = "Not logged in";
+    }
+    return text;
   }
 }

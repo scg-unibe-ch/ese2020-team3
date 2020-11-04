@@ -2,7 +2,8 @@
 
 <mat-toolbar class="topspan">
   <mat-toolbar-row>
-    <span class="span-title">T3AM</span>
+    <span class="span-logo"><img src="assets/logo.png" style="width: 200px"></span>
+    <!--<span class="span-title">T3AM</span>-->
     <span class="span-info">{{loggedInText()}}</span>
   </mat-toolbar-row>
 </mat-toolbar>
@@ -32,7 +33,8 @@
      #rla3="routerLinkActive"
      [active]="rla3.isActive">My offers</a>
 
-  <a class="link" id="authorize" mat-tab-link
+  <a *ngIf="isAdmin==true"
+     class="link" id="authorize" mat-tab-link
      routerLink="Authorize"
      routerLinkActive
      [routerLinkActiveOptions]="{exact:true}"
@@ -52,7 +54,7 @@
      routerLinkActive
      [routerLinkActiveOptions]="{exact:true}"
      #rla5="routerLinkActive"
-     [active]="rla5.isActive">Registration</a>
+     [active]="rla5.isActive">Register</a>
    </div>
 
 </nav>
