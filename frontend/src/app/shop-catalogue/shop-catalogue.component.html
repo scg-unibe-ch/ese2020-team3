@@ -42,10 +42,16 @@
         <mat-cell *matCellDef="let element"> {{element.location}} </mat-cell>
       </ng-container>
 
+      <!--LEND -->
+    <ng-container matColumnDef="lend">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Rent </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.sell_lend}} </mat-cell>
+      </ng-container>
+
       <!--PRICE -->
     <ng-container matColumnDef="price">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.price}} Pts. {{element.sell_lend=='lend'? '/h':''}}</mat-cell>
       </ng-container>
 
       <!--DELIVERABLE -->
@@ -58,14 +64,16 @@
     <ng-container matColumnDef="buy">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Buy </mat-header-cell>
       <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Buy" class="iconbutton"
-          (click)="buyProduct(element)" color="warn">
+          (click)="buyProduct(element)" color="blue">Buy
           <mat-icon>buy</mat-icon>
         </button> </mat-cell>
     </ng-container>
 
+    <!--COLUMN NAMES-->
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 
+  <!--PAGINATOR-->
   <mat-paginator id="paginator" [length]="totalRecords" [pageSize]="defaultRecords" [pageSizeOptions]="recordSizes" (page)="pageEvent = $event; onPaginateChange($event)">
 </mat-paginator>>

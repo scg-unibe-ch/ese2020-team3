@@ -1,3 +1,5 @@
+<div id="main">
+  
 <h2>My offers</h2>
 
 <p>
@@ -5,36 +7,104 @@
     have to be accepted by an admin even if they have been acepted before!
 </p>
 
+<!--LISTING MY OFFERS-->
+<mat-table #table [dataSource]="filteredProducts" matSort>
+
+    <!--TITLE-->
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+    </ng-container>
+
+    <!--DESCRIPTION -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+    </ng-container>
+
+    <!--LOCATION -->
+    <ng-container matColumnDef="location">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Location </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.location}} </mat-cell>
+      </ng-container>
+
+      <!--LEND -->
+    <ng-container matColumnDef="lend">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Rent </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.sell_lend}} </mat-cell>
+      </ng-container>
+
+      <!--PRICE -->
+    <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.price}} Pts. {{element.sell_lend=='lend'? '/h':''}}</mat-cell>
+      </ng-container>
+
+      <!--DELIVERABLE -->
+    <ng-container matColumnDef="deliverable">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Deliverable </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.deliverable}} </mat-cell>
+      </ng-container>
+
+       <!--STATUS -->
+    <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+      </ng-container>
+
+    <!--EDIT-->
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
+          (click)="editProduct(element)">Edit
+          <mat-icon>buy</mat-icon>
+        </button> </mat-cell>
+    </ng-container>
+
+    <!--COLUMN NAMES-->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <!--PAGINATOR-->
+  <mat-paginator id="paginator" [length]="totalRecords" [pageSize]="defaultRecords" [pageSizeOptions]="recordSizes" (page)="pageEvent = $event; onPaginateChange($event)">
+</mat-paginator>>
+
 <!--CHANGING THE PRODUCT-->
 <mat-card id="change-board" *ngIf="changingProduct.productId != -1">
-    <td class="change-entry"><input [(ngModel)] = "changingProduct.title" value ="{{ changingProduct.title }}"></td>
-    <td class="change-entry"> <input [(ngModel)] = "changingProduct.description" value="{{ changingProduct.description}}"> </td>
-    <td class="change-entry"> <input [(ngModel)] = "changingProduct.location" value="{{ changingProduct.location }}"></td>
-    <td class="change-entry"> <input [(ngModel)] = "changingProduct.price" type="number" value="{{ changingProduct.price }}"> Pts. </td>
+  <h2 id="change-board-title">Edit</h2>
+  <button id="close-change-board" (click)="discardChange()">X</button>
 
-    <td class="change-entry"> <button (click)="saveChange()">Save</button> </td>
-    <td class="change-entry"> <button (click)="discardChange()">Discard</button> </td>
+  <!--EDIT TITLE-->
+  <mat-form-field class="change-field" id="change-title">
+    <mat-label>Title</mat-label>
+    <input matInput [(ngModel)]="changingProduct.title" name="title" title="Provide a title"
+    value="{{ changingProduct.title }}">
+  </mat-form-field>
+
+  <!--EDIT DESCRIPTION-->
+  <mat-form-field class="change-field" id="change-description">
+    <mat-label>Description</mat-label>
+    <input matInput [(ngModel)]="changingProduct.description" name="description" title="Provide a description"
+    value="{{ changingProduct.description }}">
+  </mat-form-field>
+
+  <!--EDIT LOCATION-->
+  <mat-form-field class="change-field" id="change-location">
+    <mat-label>Location</mat-label>
+    <input matInput [(ngModel)]="changingProduct.location" name="location" title="Provide a location"
+    value="{{ changingProduct.location }}">
+  </mat-form-field>
+
+  <!--EDIT PRICE-->
+    <div class="change-field">
+    <p>Price</p>
+    <input [(ngModel)] = "changingProduct.price" type="number" onkeypress="return event.charCode >= 48" min="1"
+    value="{{ changingProduct.price }}"> Pts.
+  </div>
+
+  <td id="save-change-button" class="change-board-button"> <button (click)="saveChange()">Save</button> </td>
+  <td id="discard-change-button" class="change-board-button"> <button (click)="discardChange()">Discard</button> </td>
 </mat-card>
 
-
-<!--LISTING YOUR OFFERS-->
-<table id="offers-table">
-    <tr id="offers-head">
-        <td class="table-entry">Title</td>
-        <td class="table-entry">Description</td>
-        <td class="table-entry">Location</td>
-        <td class="table-entry">Price</td>
-        <td class="table-entry">Deliverable</td>
-        <td class="table-entry">Status</td>
-        <td class="table-entry">Change</td>
-    </tr>
-    <tr id="offers-body" *ngFor="let product of products">
-        <td class="table-entry"> {{ product.title }}</td>
-        <td class="table-entry"> {{ product.description}} </td>
-        <td class="table-entry"> {{ product.location }}</td>
-        <td class="table-entry"> {{ product.price }} Pts. </td>
-        <td class="table-entry"> {{ product.deliverable }} </td>
-        <td class="table-entry"> {{ product.status }} </td>
-        <td class="table-entry"> <button (click)="changeProduct(product)">Change</button> </td>
-    </tr>
-</table>
+</div>

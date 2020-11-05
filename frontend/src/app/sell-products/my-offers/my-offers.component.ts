@@ -11,7 +11,13 @@ import { Product } from 'src/app/models/product.model';
 export class MyOffersComponent implements OnInit {
 
   products = [];
+  filteredProducts = [];
   changingProduct = this.dummyProduct();
+  displayedColumns = ['title', 'description', 'location', 'lend', 'price', 'deliverable', 'status', 'edit'];
+  recordSizes = [5, 10, 20]; //Possible results per page
+  defaultRecords = 5; //Default records per page
+  totalRecords = 0; //Total amount
+  pageEvent: any;
 
   loggedIn = false;
   userId = 0;
@@ -22,8 +28,14 @@ export class MyOffersComponent implements OnInit {
     this.update();
   }
 
+  onPaginateChange(data) {
+    const begin = data.pageIndex * data.pageSize;
+    const end = begin + data.pageSize;
+    this.filteredProducts = this.products.slice(begin, end);
+  }
+
   dummyProduct():Product {
-    return new Product(-1, '', '', '', -1, false, '', 0, '', false, '');
+    return new Product(-1, '', '', '', -1, 'sell', '', 0, '', false, '');
   }
 
   update() {
@@ -36,23 +48,25 @@ export class MyOffersComponent implements OnInit {
   loadMyProducts() {
     this.products = [];
     if (this.loggedIn) {
-      this.httpClient.get(environment.endpointURL + 'products/all/' + this.userId).subscribe((data: any) => {
-        data.forEach(product => {
+      this.httpClient.get(environment.endpointURL + 'products/all/' + this.userId).subscribe((products: any) => {
+        products.forEach(product => {
             this.products.push(product);
             console.log(product);
         });
+        this.filteredProducts = this.products.slice(0, this.defaultRecords);
+        this.totalRecords = this.products.length;
       }, (error: any) => {
         window.alert("An Error occurred. The catalogue could not be loaded.");
       });
     }
   }
 
-  changeProduct(product: Product) {
+  editProduct(product: Product) {
     this.changingProduct = {...product};
   }
 
   saveChange() {
-    if (this.changingProduct.productId != -1) {
+    if (this.changingProduct.productId != -1 && this.changesAreValid()) {
       const product = this.changingProduct;
       this.httpClient.put(environment.endpointURL + 'products/' + product.productId, {
         title: product.title,
@@ -65,6 +79,14 @@ export class MyOffersComponent implements OnInit {
       }).subscribe();
       this.update();
     }
+  }
+
+  changesAreValid(): boolean {
+    return this.changingProduct.price > 0
+          && this.changingProduct != null
+          && this.changingProduct.title != ''
+          && this.changingProduct.location != ''
+          && this.changingProduct.description != '';
   }
 
   discardChange() {

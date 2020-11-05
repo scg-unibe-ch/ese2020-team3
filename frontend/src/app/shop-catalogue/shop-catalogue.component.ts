@@ -21,7 +21,7 @@ export class ShopCatalogueComponent implements OnInit {
   defaultRecords = 5; //Default records per page
   totalRecords = 0; //Total amount
   pageEvent: any;
-  displayedColumns = ['title', 'description', 'location', 'price', 'deliverable', 'buy'];
+  displayedColumns = ['title', 'description', 'location', 'lend', 'price', 'deliverable', 'buy'];
 
   loggedIn: boolean = false;
   userId: number = 0;
@@ -34,6 +34,7 @@ export class ShopCatalogueComponent implements OnInit {
     this.update();
   }
 
+  //Executed when changing the page of the paginator or changing the number of results on 1 page
   onPaginateChange(data) {
     const begin = data.pageIndex * data.pageSize;
     const end = begin + data.pageSize;

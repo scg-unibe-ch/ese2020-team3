@@ -6,7 +6,7 @@ export class Product {
       public type: string,
       public description: string,
       public userId: number,
-      public rent: boolean,
+      public sell_lend: string,
       public location: string,
       public price: number,
       public status: string,
