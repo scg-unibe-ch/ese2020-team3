@@ -22,30 +22,50 @@
     No Products available
 </div>
 
-<!--LIST PRODUCTS-->
-<table id="offers-table">
-    <tr id="offers-head">
-        <td class="table-entry">Title</td>
-        <td class="table-entry">Description</td>
-        <td class="table-entry">Location</td>
-        <td class="table-entry">Price</td>
-        <td class="table-entry">Deliverable</td>
-        <td class="table-entry">Status</td>
-        <td class="table-entry">Buy</td>
-    </tr>
-    <tr id="offers-body" *ngFor="let product of filteredProducts">
-        
-        <td class="table-entry"> {{ product.title }}</td>
-        <td class="table-entry"> {{ product.description}} </td>
-        <td class="table-entry"> {{ product.location }}</td>
-        <td class="table-entry"> {{ product.price }} Pts. </td>
-        <td class="table-entry"> {{ product.deliverable }} </td>
-        <td class="table-entry"> {{ product.status }} </td>
-        <td class="table-entry"> <button (click)="buyProduct(product)">Buy</button> </td>
-        
-    </tr>
-</table>
+<mat-table #table [dataSource]="filteredProducts" matSort>
 
-<!--PAGINATOR-->
-<mat-paginator id="paginator" [length]="totalRecords" [pageSize]="defaultRecords" [pageSizeOptions]="recordSizes" (page)="pageEvent = $event; onPaginateChange($event)">
-</mat-paginator>
+    <!--TITLE-->
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+    </ng-container>
+
+    <!--DESCRIPTION -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+    </ng-container>
+
+    <!--LOCATION -->
+    <ng-container matColumnDef="location">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Location </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.location}} </mat-cell>
+      </ng-container>
+
+      <!--PRICE -->
+    <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+      </ng-container>
+
+      <!--DELIVERABLE -->
+    <ng-container matColumnDef="deliverable">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Deliverable </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.deliverable}} </mat-cell>
+      </ng-container>
+
+    <!--BUY-->
+    <ng-container matColumnDef="buy">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Buy </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Buy" class="iconbutton"
+          (click)="buyProduct(element)" color="warn">
+          <mat-icon>buy</mat-icon>
+        </button> </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator id="paginator" [length]="totalRecords" [pageSize]="defaultRecords" [pageSizeOptions]="recordSizes" (page)="pageEvent = $event; onPaginateChange($event)">
+</mat-paginator>>

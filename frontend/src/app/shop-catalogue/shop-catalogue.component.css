@@ -5,12 +5,6 @@
   margin: auto;
 }
 
-#paginator {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-}
-
 #offers-table {
   table-layout: fixed;
   width: 90%;
@@ -28,4 +22,8 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   padding: 10px;
+}
+
+#paginator {
+  width: 100%;
 }

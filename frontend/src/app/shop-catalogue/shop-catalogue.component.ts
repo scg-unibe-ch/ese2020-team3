@@ -1,9 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Product } from '../models/product.model';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import {FormControl} from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-products-catalog',
@@ -13,12 +15,13 @@ import {MatPaginator} from '@angular/material/paginator';
 
 export class ShopCatalogueComponent implements OnInit {
 
-  products = [];
+  products:Product[] = [];
   filteredProducts = [];
   recordSizes = [5, 10, 20]; //Possible results per page
   defaultRecords = 5; //Default records per page
   totalRecords = 0; //Total amount
   pageEvent: any;
+  displayedColumns = ['title', 'description', 'location', 'price', 'deliverable', 'buy'];
 
   loggedIn: boolean = false;
   userId: number = 0;

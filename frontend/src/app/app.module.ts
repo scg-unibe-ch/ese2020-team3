@@ -32,6 +32,9 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MyOffersComponent } from './sell-products/my-offers/my-offers.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 const routes: Routes= [
   {path: 'Login', component: UserLoginComponent},
@@ -76,7 +79,10 @@ const routes: Routes= [
         RouterModule.forRoot(routes),
         MatTableModule,
         MatSliderModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatSortModule,
+        MatIconModule,
+        MatTooltipModule
     ],
   providers: [
     {
