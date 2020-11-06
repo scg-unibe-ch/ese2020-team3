@@ -35,6 +35,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { ProductPipe } from './product-pipe.pipe';
 
 const routes: Routes= [
   {path: 'Login', component: UserLoginComponent},
@@ -61,6 +62,7 @@ const routes: Routes= [
     WelcomePageComponent,
     ProductAuthorizationComponent,
     MyOffersComponent,
+    ProductPipe,
   ],
     imports: [
         BrowserModule,

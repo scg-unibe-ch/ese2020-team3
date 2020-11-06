@@ -9,12 +9,16 @@
 
         <form class="search-field">
             <mat-form-field class="example-full-width">
-                <mat-label>Search</mat-label>
-                <input matInput placeholder="What are you looking for?" value="">
+                <mat-label>Looking for title</mat-label>
+                <input matInput placeholder="What are you looking for?" value="" name="title" [(ngModel)]="productFilter.title">
             </mat-form-field>
         </form>
 
+        <!--PRICE RANGE SLIDERS-->
         <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+
+        <!--SEARCH BUTTON-->
+        <button (click)="searchForProducts()">Search</button>
     </mat-card-content>
 </mat-card>
 
@@ -22,7 +26,7 @@
     No Products available
 </div>
 
-<mat-table #table [dataSource]="filteredProducts" matSort>
+<mat-table #table [dataSource]="paginatedProducts" matSort>
 
     <!--TITLE-->
     <ng-container matColumnDef="title">

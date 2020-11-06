@@ -11,7 +11,7 @@ import { Product } from 'src/app/models/product.model';
 export class MyOffersComponent implements OnInit {
 
   products = [];
-  filteredProducts = [];
+  paginatedProducts = [];
   changingProduct = this.dummyProduct();
   displayedColumns = ['title', 'description', 'location', 'lend', 'price', 'deliverable', 'status', 'edit'];
   recordSizes = [5, 10, 20]; //Possible results per page
@@ -31,7 +31,7 @@ export class MyOffersComponent implements OnInit {
   onPaginateChange(data) {
     const begin = data.pageIndex * data.pageSize;
     const end = begin + data.pageSize;
-    this.filteredProducts = this.products.slice(begin, end);
+    this.paginatedProducts = this.products.slice(begin, end);
   }
 
   dummyProduct():Product {
@@ -53,7 +53,7 @@ export class MyOffersComponent implements OnInit {
             this.products.push(product);
             console.log(product);
         });
-        this.filteredProducts = this.products.slice(0, this.defaultRecords);
+        this.paginatedProducts = this.products.slice(0, this.defaultRecords);
         this.totalRecords = this.products.length;
       }, (error: any) => {
         window.alert("An Error occurred. The catalogue could not be loaded.");
