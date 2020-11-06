@@ -14,7 +14,26 @@ export class ProductPipe implements PipeTransform {
   transform(products: Product[], productFilter: ProductFilter): Product[] {
     return products.filter((product) => 
       product.title.includes(productFilter.title)
+      && product.location.includes(productFilter.location)
+      && product.type.includes(productFilter.type)
+      && product.sell_lend.includes(productFilter.sell_lend)
+      && this.deliverableMatches(product.deliverable, productFilter.deliverable)
+      && this.priceMatches(product.price, productFilter.minPrice, productFilter.maxPrice)
     );
+  }
+
+  deliverableMatches(productDeliverable: boolean, productFilterDeliverable: string) {
+    return productFilterDeliverable == ""
+          || (productFilterDeliverable == "true" && productDeliverable)
+          || (productFilterDeliverable == "false" && !productDeliverable);
+  }
+
+  priceMatches(productPrice: number, productFilterMinPrice: number, productFilterMaxPrice: number) {
+    return (productFilterMinPrice == null
+            || productPrice >= productFilterMinPrice)
+            &&
+            (productFilterMaxPrice == null
+            || productPrice <= productFilterMaxPrice);
   }
 
 }

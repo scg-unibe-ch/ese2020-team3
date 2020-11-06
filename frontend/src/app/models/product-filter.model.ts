@@ -7,7 +7,6 @@ export class ProductFilter {
       public location: string, //some string or empty
       public minPrice: number,
       public maxPrice: number,
-      public deliverable: boolean,
-      public careAboutDeliverable: boolean
+      public deliverable: string //"true", "false" or ""
     ) {}
   }

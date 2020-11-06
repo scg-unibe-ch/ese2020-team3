@@ -46,7 +46,7 @@ export class ShopCatalogueComponent implements OnInit {
    * Provides a defaulr product Filter for the ProductPipe to work with.
    */
   defaultProductFilter() {
-    return new ProductFilter('', '', '', '', 0, Number.MAX_VALUE, true, false);
+    return new ProductFilter('', '', '', '', null, null, '');
   }
 
   //Load all products that are authorized and available from the backend (Exclude the ones from the logged in user)

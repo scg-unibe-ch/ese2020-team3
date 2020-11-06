@@ -2,31 +2,74 @@
 <!-- my mock page -->
 <mat-card id="input-form">
     <mat-card-content>
-        <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="Buy">Buy</mat-radio-button>
-            <mat-radio-button value="Rent">Rent</mat-radio-button>
-        </mat-radio-group>
 
-        <form class="search-field">
+        <h2 id="search-form-title">Search for specifics</h2>
+
+        <!--LOOK FOR TITLE-->
+          <form class="search-field">
             <mat-form-field class="example-full-width">
                 <mat-label>Looking for title</mat-label>
                 <input matInput placeholder="What are you looking for?" value="" name="title" [(ngModel)]="productFilter.title">
             </mat-form-field>
         </form>
 
-        <!--PRICE RANGE SLIDERS-->
-        <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+        <!--LOOK FOR LOCATION-->
+        <form class="search-field">
+          <mat-form-field class="example-full-width">
+              <mat-label>Looking for location</mat-label>
+              <input matInput placeholder="What are you looking for?" value="" name="location" [(ngModel)]="productFilter.location">
+          </mat-form-field>
+        </form>
+
+        <!--LOOK FOR TYPE-->
+        <form>
+          <mat-radio-group [(ngModel)]="productFilter.type" name="type">
+            <mat-radio-button value="Product" checked>Product</mat-radio-button>
+            <mat-radio-button value="Service">Service</mat-radio-button>
+            <mat-radio-button value="">Don't care</mat-radio-button>
+          </mat-radio-group>
+        </form>
+
+        <!--LOOK FOR BUY OR RENT-->
+        <form>
+          <mat-radio-group aria-label="Select an option" [(ngModel)]="productFilter.sell_lend" name="sell_lend">
+              <mat-radio-button value="sell">Buy</mat-radio-button>
+              <mat-radio-button value="lend">Rent</mat-radio-button>
+              <mat-radio-button value="">Don't care</mat-radio-button>
+          </mat-radio-group>
+        </form>
+
+        <!--LOOK FOR BUY OR DELIVERABLE-->
+        <form>
+          <mat-radio-group aria-label="Select an option" [(ngModel)]="productFilter.deliverable" name="deliverable">
+              <mat-radio-button value="false">Pickup</mat-radio-button>
+              <mat-radio-button value="true">Deliverable</mat-radio-button>
+              <mat-radio-button value="">Don't care</mat-radio-button>
+          </mat-radio-group>
+        </form>
+
+        <!--LOOK FOR BUY OR PRICE RANGE-->
+        <mat-form-field>
+          <mat-label>Min Price</mat-label>
+          <input matInput type="number" min="1" oninput="validity.valid||(value='');" [(ngModel)]="productFilter.minPrice" name="price">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Max Price</mat-label>
+        <input matInput type="number" min="1" oninput="validity.valid||(value='');" [(ngModel)]="productFilter.maxPrice" name="price">
+      </mat-form-field>
+
 
         <!--SEARCH BUTTON-->
         <button (click)="searchForProducts()">Search</button>
+
     </mat-card-content>
 </mat-card>
 
-<div *ngIf="(products.length ==0 )">
+<div *ngIf="(paginatedProducts.length ==0 )">
     No Products available
 </div>
 
-<mat-table #table [dataSource]="paginatedProducts" matSort>
+<mat-table id="catalogue" #table [dataSource]="paginatedProducts" matSort>
 
     <!--TITLE-->
     <ng-container matColumnDef="title">
@@ -80,4 +123,4 @@
 
   <!--PAGINATOR-->
   <mat-paginator id="paginator" [length]="totalRecords" [pageSize]="defaultRecords" [pageSizeOptions]="recordSizes" (page)="pageEvent = $event; onPaginateChange($event)">
-</mat-paginator>>
+</mat-paginator>

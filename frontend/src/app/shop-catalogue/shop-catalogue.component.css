@@ -1,27 +1,14 @@
 #input-form {
-  display: flex;
+  position: absolute;
+  width: 20%;
+  height: 50%;
   justify-content: center;
-  align-items: center;
-  margin: auto;
 }
 
-#offers-table {
-  table-layout: fixed;
-  width: 90%;
-  margin: 5%;
-  border-collapse: collapse;
-}
-
-#offers-table tr {
-  border: 1px solid black;
-}
-
-.table-entry {
-  width: 50px;
-  height: 80px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  padding: 10px;
+#catalogue {
+  width: 60%;
+  margin-left: 30%;
+  margin-right: 10%;
 }
 
 #paginator {
