@@ -5,14 +5,11 @@ import jwt from 'jsonwebtoken';
 
 export class ProductService {
 
-    public bought(product1: ProductAttributes): Promise<ProductAttributes> {
-       return Product.findOne( {
-           where: {
-               productId: product1.productId
-           }
-       })
+    public bought(tobuyId: number, buyerId: number): Promise<ProductAttributes> {
+       return Product.findByPk(tobuyId)
            .then(product => {
                product.set('status', 'sold');
+               product.set('boughtbyId', buyerId);
                product.save();
                return Promise.resolve(product);
            });

@@ -14,6 +14,7 @@ export interface ProductAttributes {
     description: string;
     price: number;
     userId: number;
+    boughtbyId: number;
 }
 
 // tells sequelize that todoItemId is not a required field
@@ -33,6 +34,7 @@ export class Product extends Model<ProductAttributes, ProductAttributes> impleme
     description!: string;
     price!: number;
     userId!: number;
+    boughtbyId!: number;
 
 
     public static initialize(sequelize: Sequelize) { // definition for database
@@ -79,6 +81,9 @@ export class Product extends Model<ProductAttributes, ProductAttributes> impleme
                 userId: {
                     type: DataTypes.INTEGER,
                     allowNull: false
+                },
+                boughtbyId: {
+                    type: DataTypes.INTEGER,
                 }
             },
             { sequelize, tableName: 'products' }

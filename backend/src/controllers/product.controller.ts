@@ -33,11 +33,13 @@ productController.put('/:id', (req: Request, res: Response) => {
 
 productController.get('/search',
     (req: Request, res: Response) => {
+
         let title = '%';
         let uplim = 10000;
         let lowlim = 0;
         const location = '%';
-        let deliverable = '%';
+        let deliverable = null;
+
     if (req.body.title != null) {
         title = req.body.title;
     }
@@ -62,7 +64,6 @@ productController.get('/search',
                     deliverable: {[Sequelize.Op.is]: deliverable}
                 })
             }
-
         )
             .then(found => {
                 res.status(200).send(found);
@@ -70,9 +71,11 @@ productController.get('/search',
     });
 
 // TODO product needs to know userID and do some testing
-productController.put('/buy',
+productController.put('/buy/:id',
     (req: Request, res: Response) => {
-        productService.bought(req.body).then(() => res.status(200).send());
+    const tobuyId = Number(req.params.id);
+    const buyerId = req.body.userId;
+        productService.bought(tobuyId, buyerId).then((bought) => res.status(200).send(bought)).catch(err => res.status(500).send(err));
     }
 );
 

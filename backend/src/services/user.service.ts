@@ -11,10 +11,10 @@ export class UserService {
         return User.create(user).then(inserted => Promise.resolve(inserted)).catch(err => Promise.reject(err));
     }
 
-    public calculate(user1: UserAttributes, price: number): Promise<UserAttributes> {
+    public calculate(buyerId: number, price: number): Promise<UserAttributes> {
         return User.findOne( {
             where: {
-                userId: user1.userId
+                userId: buyerId
             }
         })
             .then(user => {
@@ -36,6 +36,7 @@ export class UserService {
                 return Promise.resolve(user);
             });
     }
+
     public login(loginRequestee: LoginRequest): Promise<User | LoginResponse> {
         const secret = process.env.JWT_SECRET;
         return User.findOne({
