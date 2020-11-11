@@ -15,6 +15,8 @@ export class SellProductsComponent implements OnInit {
   userToken = '';
   userName = '';
 
+  sellOptions = ['sell', 'lend'];
+
   product: Product;
 
   constructor(private httpClient: HttpClient) { }
@@ -31,7 +33,7 @@ export class SellProductsComponent implements OnInit {
       'Product',                                //Type
       '',                                       //Description
       parseInt(localStorage.getItem('userId')), //UserId
-      false,                                    //lend and not sell
+      'sell',                                    //lend or sell
       '',                                       //Location
       0,                                        //Price
       'unauthorized',                           //Status
@@ -55,7 +57,7 @@ export class SellProductsComponent implements OnInit {
         location: this.product.location,
         type: this.product.type,
         price: this.product.price,
-        sell_lend: this.product.rent? 'lend' : 'sell',
+        sell_lend: this.product.sell_lend,
         deliverable: this.product.deliverable,
         userId: this.product.userId,
         status: this.product.status,

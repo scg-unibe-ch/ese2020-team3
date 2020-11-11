@@ -1,6 +1,6 @@
 <mat-card id="main">
 
-    <h3 id="form-title">{{product.rent? 'Rent' : 'Sell'}} a {{product.type}}</h3>
+    <h3 id="form-title">{{product.sell_lend}} a {{product.type}}</h3>
 
     <!--TYPE-->
     Type: 
@@ -10,11 +10,11 @@
     </select>
 
     <!--RENT-->
-    <div id="rent-form">
-    <mat-label id="rent-label">Sell or rent:</mat-label>
-    <mat-radio-group id="rent-radio" [(ngModel)]="product.rent">
-        <mat-radio-button [value]=false checked>Sell</mat-radio-button>
-        <mat-radio-button [value]=true>Rent</mat-radio-button>
+    <div id="rent">
+    <mat-radio-group id="rent-radio" [(ngModel)]="product.sell_lend">
+        <mat-radio-button *ngFor="let option of sellOptions" [value]="option">
+            {{option}}
+          </mat-radio-button>
     </mat-radio-group>
     </div>
       
@@ -36,13 +36,13 @@
             maxlength=100
             [(ngModel)]="product.description"
             name="description"
-            title="Describe the {{product.type}} you want to {{product.rent? 'rent' : 'sell'}}">
+            title="Describe the {{product.type}} you want to {{product.sell_lend}}">
         </textarea>
     </mat-form-field>
 
     <!--COSTS-->
     <mat-form-field id="price">
-        <mat-label>Price {{product.rent? '(per hour)' : ''}}</mat-label>
+        <mat-label>Price {{product.sell_lend=='lend'? '(per hour)' : ''}}</mat-label>
         <input matInput type="number" min="1" oninput="validity.valid||(value='');" [(ngModel)]="product.price" name="price">
     </mat-form-field>
 
@@ -51,6 +51,14 @@
         <mat-label>Location</mat-label>
         <input matInput [(ngModel)]="product.location" maxlength=50 name="location" title="">
     </mat-form-field>
+
+    <!--DELIVERABLE OR PICKUP-->
+    <div id="deliverable">
+        <mat-radio-group id="deliverable-radio" [(ngModel)]="product.deliverable">
+            <mat-radio-button [value]=false checked>Pickup</mat-radio-button>
+            <mat-radio-button [value]=true>Deliverable</mat-radio-button>
+        </mat-radio-group>
+    </div>
 
     <!--SUBMISSION-->
     <button id="submit" mat-flat-button (click)="submitProduct()">

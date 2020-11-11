@@ -1,8 +1,41 @@
+#main {
+    width: 90%;
+    margin: 5%;
+}
+
 .table-entry {
     white-space: nowrap;
     width: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+#change-board {
+    position: fixed;
+    width: 500px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px; /* Negative half of height. */
+    margin-left: -250px; /* Negative half of width. */
+}
+
+.change-field {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+}
+
+#close-change-board {
+    position: absolute;
+    width: 5%;
+    height: 5%;
+    left: 95%;
+    bottom: 95%;
+}
+
+.change-board-button {
+    padding: 10px;
 }
 
 #offers-table {

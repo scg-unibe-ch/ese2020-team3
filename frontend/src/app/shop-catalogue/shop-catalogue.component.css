@@ -1,6 +1,16 @@
 #input-form {
-  display: flex;
+  position: absolute;
+  width: 20%;
+  height: 50%;
   justify-content: center;
-  align-items: center;
-  margin: auto;
+}
+
+#catalogue {
+  width: 60%;
+  margin-left: 30%;
+  margin-right: 10%;
+}
+
+#paginator {
+  width: 100%;
 }

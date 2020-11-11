@@ -31,6 +31,11 @@ import {LoginGuard} from "./login-guard";
 import {MatSliderModule} from '@angular/material/slider';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MyOffersComponent } from './sell-products/my-offers/my-offers.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { ProductPipe } from './product-pipe.pipe';
 
 const routes: Routes= [
   {path: 'Login', component: UserLoginComponent},
@@ -57,6 +62,7 @@ const routes: Routes= [
     WelcomePageComponent,
     ProductAuthorizationComponent,
     MyOffersComponent,
+    ProductPipe,
   ],
     imports: [
         BrowserModule,
@@ -74,7 +80,11 @@ const routes: Routes= [
         MatRadioModule,
         RouterModule.forRoot(routes),
         MatTableModule,
-        MatSliderModule
+        MatSliderModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatIconModule,
+        MatTooltipModule
     ],
   providers: [
     {
