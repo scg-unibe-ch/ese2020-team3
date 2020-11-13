@@ -22,10 +22,10 @@ export class ProductAuthorizationComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getProducts()
+    this.updateProducts()
   }
 
-  getProducts(){
+  updateProducts(){
     return this.httpClient.get(environment.endpointURL + 'products/authorized/no').subscribe((res: any) =>
     {
       console.log(res);
@@ -44,7 +44,7 @@ export class ProductAuthorizationComponent implements OnInit {
       console.log(res);
 
       //refresh page to update table
-      this.refresh()
+      this.updateProducts()
     })
 
   }
@@ -55,12 +55,8 @@ export class ProductAuthorizationComponent implements OnInit {
       console.log("Delete:");
 
       //refresh page to update table
-      this.refresh()
+      this.updateProducts()
     })
-  }
-
-  refresh(): void {
-    window.location.reload();
   }
 
 }

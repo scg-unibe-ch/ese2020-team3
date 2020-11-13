@@ -21,7 +21,9 @@ userController.put('/update',
 // TODO not yet tested
 userController.put('/calculate/:price',
     (req: Request, res: Response) => {
-        userService.calculate(req.body, Number(req.params.price)).then(calculated => res.send(calculated)).catch(err => res.status(500).send(err));
+        const buyerId = req.body.userId;
+        const price = Number(req.params.price);
+        userService.calculate(buyerId, price).then(calculated => res.send(calculated)).catch(err => res.status(500).send(err));
     }
     );
 

@@ -1,34 +1,18 @@
-/*
-
-* {
+html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 #main {
-    position: absolute;
-    top: 12%;
-    left: 0;
-    height: 88%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 60%;
+}
+
+.search-field, .example-full-width {
     width: 100%;
 }
-
-#landing {
-    
-    
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-#big-title {
-    color: var(--clr-tertiary);
-    text-align: center;
-    transform: translate(0, 10rem);
-    text-shadow: var(--clr-primary) 0 0 20px;
-    font-size: 5rem;
-    letter-spacing: 1rem;
-}
-
-*/
