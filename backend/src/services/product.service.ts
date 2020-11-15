@@ -14,4 +14,20 @@ export class ProductService {
                return Promise.resolve(product);
            });
     }
+
+    public price(Id: number): Promise<number> {
+        return Product.findByPk(Id)
+            .then(product => {
+                const price = product.price;
+                return Promise.resolve(price);
+            });
+    }
+
+    public userId(Id: number): Promise<number> {
+        return Product.findByPk(Id)
+            .then(product => {
+                const userId = product.userId;
+                return Promise.resolve(userId);
+            });
+    }
 }

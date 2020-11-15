@@ -9,12 +9,14 @@ const productController: Router = express.Router();
 const userService = new UserService();
 const productService = new ProductService();
 
+// post a product
 productController.post('/post', (req: Request, res: Response) => {
     Product.create(req.body)
         .then(inserted => res.send(inserted))
         .catch(err => res.status(500).send(err));
 });
 
+// update product attributes
 productController.put('/:id', (req: Request, res: Response) => {
     Product.findByPk(req.params.id)
         .then(found => {
@@ -30,7 +32,29 @@ productController.put('/:id', (req: Request, res: Response) => {
 
 });
 
+// get price of product
+productController.get('/price',
+    (req: Request, res: Response) => {
+        const Id = Number(req.body.productId);
+        Product.findByPk(Id)
+            .then(product => {
+                const price = product.price;
+                res.status(200).send(price.toString());
+            });
+    });
 
+// get Id of user who posted the product
+productController.get('/userId',
+    (req: Request, res: Response) => {
+        const Id = Number(req.body.productId);
+        Product.findByPk(Id)
+            .then(product => {
+                const userId = product.userId;
+                res.status(200).send(userId.toString());
+            });
+    });
+
+// search for specific product
 productController.get('/search',
     (req: Request, res: Response) => {
 
@@ -70,7 +94,7 @@ productController.get('/search',
             });
     });
 
-// TODO product needs to know userID and do some testing
+// updates product with userId of user who bought it and sets status to 'sold'
 productController.put('/buy/:id',
     (req: Request, res: Response) => {
     const tobuyId = Number(req.params.id);
@@ -79,6 +103,7 @@ productController.put('/buy/:id',
     }
 );
 
+// deletes product
 productController.delete('/:id', (req: Request, res: Response) => {
     Product.findByPk(req.params.id)
         .then(found => {
@@ -118,6 +143,7 @@ productController.get('/all', (req: Request, res: Response) => {
 });
 */
 
+// gets products by authorized
 productController.get('/authorized/:boolean',  (req: Request, res: Response) => {
     const authorized = req.params.boolean;
     Product.findAll({
@@ -135,6 +161,7 @@ productController.get('/authorized/:boolean',  (req: Request, res: Response) => 
         .catch(err => res.status(500).send(err));
 });
 
+// gets all products posted by a certain user
 productController.get('/all/:userId',  (req: Request, res: Response) => {
     const userId = req.params.userId;
     Product.findAll({

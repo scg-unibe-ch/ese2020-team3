@@ -1,4 +1,5 @@
 import { UserAttributes, User } from '../models/user.model';
+import { ProductAttributes, Product } from '../models/product.model';
 import { LoginResponse, LoginRequest } from '../models/login.model';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -11,7 +12,20 @@ export class UserService {
         return User.create(user).then(inserted => Promise.resolve(inserted)).catch(err => Promise.reject(err));
     }
 
-    public calculate(buyerId: number, price: number): Promise<UserAttributes> {
+    public sell(sellerId: number, price: number): Promise<UserAttributes> {
+        return User.findOne( {
+            where: {
+                userId: sellerId
+            }
+        })
+            .then(user => {
+                user.set('wallet', user.wallet + price);
+                user.save();
+                return Promise.resolve(user);
+            });
+    }
+
+    public buy(buyerId: number, price: number): Promise<UserAttributes> {
         return User.findOne( {
             where: {
                 userId: buyerId

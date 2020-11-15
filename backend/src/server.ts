@@ -5,6 +5,7 @@ import { TodoListController } from './controllers/todolist.controller';
 import { UserController } from './controllers/user.controller';
 import { SecuredController } from './controllers/secured.controller';
 import { ProductController} from './controllers/product.controller';
+ import { PurchaseController} from './controllers/purchase.controller';
 import { Sequelize } from 'sequelize';
 import { Product} from './models/product.model';
 import { TodoList } from './models/todolist.model';
@@ -61,6 +62,7 @@ export class Server {
             .use('/user', UserController)
             .use('/products', ProductController)
             .use('/secured', SecuredController)
+            .use('/purchase', PurchaseController)
             .options('*', cors(options))
             .use(express.static('./src/public'))
             // this is the message you get if you open http://localhost:3000/ when the server is running
