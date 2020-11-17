@@ -14,6 +14,8 @@ import {ProductFilter} from '../models/product-filter.model';
 
 export class ShopCatalogueComponent implements OnInit {
 
+  test = 'Guli';
+
   products:Product[] = [];
   paginatedProducts = [];
   filteredProducts = [];
@@ -29,10 +31,26 @@ export class ShopCatalogueComponent implements OnInit {
   userWallet: number = 0;
   userToken: string = '';
 
-  constructor(private httpClient: HttpClient, private pipe: ProductPipe) { }
+  constructor(private httpClient: HttpClient, private pipe: ProductPipe) {
+  }
 
   ngOnInit(): void {
     this.update();
+  }
+
+  searchFromWelcomePage() {
+    let searchTerm = localStorage.getItem("TEMP_PRODUCT_SEARCH_TERM");
+    if (!!searchTerm) {
+      this.filteredProducts = this.products.filter((product) => 
+        product.title.includes(searchTerm)
+        || product.location.includes(searchTerm)
+        || product.description.includes(searchTerm)
+      );
+      this.totalRecords = this.filteredProducts.length;
+      this.updatePaginatedProducts();
+    
+      localStorage.removeItem("TEMP_PRODUCT_SEARCH_TERM");
+    }
   }
 
   //Executed when changing the page of the paginator or changing the number of results on 1 page
@@ -56,12 +74,12 @@ export class ShopCatalogueComponent implements OnInit {
       data.forEach(product => {
         if (product.status == 'available' && product.userId != this.userId) {
           this.products.push(product);
-          console.log(product);
         }
       });
 
       this.updateFilteredProducts();
       this.updatePaginatedProducts();
+      this.searchFromWelcomePage();
 
     }, (error: any) => {
       window.alert("An Error occurred. The catalogue could not be loaded.");

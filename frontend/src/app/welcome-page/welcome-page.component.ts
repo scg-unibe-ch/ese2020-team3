@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome-page',
@@ -12,14 +13,16 @@ export class WelcomePageComponent implements OnInit {
 
 	searchForm: FormControl;
 
-	constructor() { }
+	constructor(private router: Router) {}
 
 	ngOnInit(): void {
 		this.searchForm = new FormControl('', []);
 	}
 
 	onSubmit(searchValue: string) {
-    	this.searchEvent.emit(searchValue);
+		localStorage.setItem("TEMP_PRODUCT_SEARCH_TERM", searchValue);
+		this.searchEvent.emit(searchValue);
+		this.router.navigateByUrl('/Shop');
   	}
 
 }

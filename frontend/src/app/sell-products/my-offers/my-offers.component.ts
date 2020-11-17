@@ -51,7 +51,6 @@ export class MyOffersComponent implements OnInit {
       this.httpClient.get(environment.endpointURL + 'products/all/' + this.userId).subscribe((products: any) => {
         products.forEach(product => {
             this.products.push(product);
-            console.log(product);
         });
         this.paginatedProducts = this.products.slice(0, this.defaultRecords);
         this.totalRecords = this.products.length;
