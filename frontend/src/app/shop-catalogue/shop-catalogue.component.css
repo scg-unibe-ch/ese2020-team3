@@ -1,8 +1,19 @@
 #input-form {
   position: absolute;
   width: 20%;
-  height: 50%;
+  height: 80%;
   justify-content: center;
+}
+
+mat-radio-button {
+  margin: 5px;
+}
+
+#btn-search {
+  align-self: center;
+  display: block;
+  margin: 0 10% 0 10%;
+  width: 80%;
 }
 
 #catalogue {

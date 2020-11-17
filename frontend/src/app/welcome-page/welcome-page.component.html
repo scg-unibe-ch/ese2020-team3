@@ -1,11 +1,18 @@
 <div id="landing">
     <div id="main">
+
+        <h1>
+            Welcome to<br>
+            T3AM 3 Shop 'n' Sell
+        </h1>
+
         <form class="search-field">
             <mat-form-field class="example-full-width">
-                <mat-label>Looking for title</mat-label>
-                <input matInput placeholder="What are you looking for?" value="" name="title">
+                <mat-label>Looking for title/location/description</mat-label>
+                <input matInput placeholder="What are you looking for?" [(ngModel)]="searchForm.value" name="title">
             </mat-form-field>
-            <button>Search</button>
+            <input type="submit" (click)="onSubmit(searchForm.value)" value="Search">
         </form>
+
     </div>
 </div>

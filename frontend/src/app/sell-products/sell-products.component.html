@@ -1,6 +1,11 @@
-<mat-card id="main">
+<mat-card id="sell-products-form">
+<form>
 
-    <h3 id="form-title">{{product.sell_lend}} a {{product.type}}</h3>
+    <h3 id="form-title">Offer a {{product.type}}</h3>
+
+    <p>
+        Offer a product or service to other users and earn points to buy their offers
+    </p>
 
     <!--TYPE-->
     Type: 
@@ -11,10 +16,9 @@
 
     <!--RENT-->
     <div id="rent">
-    <mat-radio-group id="rent-radio" [(ngModel)]="product.sell_lend">
-        <mat-radio-button *ngFor="let option of sellOptions" [value]="option">
-            {{option}}
-          </mat-radio-button>
+    <mat-radio-group id="rent-radio" [(ngModel)]="product.sell_lend" name="sell_lend">
+        <mat-radio-button value="sell">Sell</mat-radio-button>
+        <mat-radio-button value="lend">Lend</mat-radio-button>
     </mat-radio-group>
     </div>
       
@@ -22,7 +26,7 @@
     <!--TITLE-->
     <mat-form-field id="title">
         <mat-label>Title</mat-label>
-        <input matInput [(ngModel)]="product.title" maxLength=50 name="title" title="Provide a title for your {{product.type}}">
+        <input matInput [(ngModel)]="product.title" placeholder="Title" maxLength=50 name="title" title="Provide a title for your {{product.type}}" required>
     </mat-form-field>
 
     <!--DESCRIPTION-->
@@ -36,6 +40,7 @@
             maxlength=100
             [(ngModel)]="product.description"
             name="description"
+            required
             title="Describe the {{product.type}} you want to {{product.sell_lend}}">
         </textarea>
     </mat-form-field>
@@ -43,28 +48,27 @@
     <!--COSTS-->
     <mat-form-field id="price">
         <mat-label>Price {{product.sell_lend=='lend'? '(per hour)' : ''}}</mat-label>
-        <input matInput type="number" min="1" oninput="validity.valid||(value='');" [(ngModel)]="product.price" name="price">
+        <input matInput type="number" min="1" oninput="validity.valid||(value='');" [(ngModel)]="product.price" name="price" required>
     </mat-form-field>
 
     <!--LOCATION-->
     <mat-form-field>
         <mat-label>Location</mat-label>
-        <input matInput [(ngModel)]="product.location" maxlength=50 name="location" title="">
+        <input matInput [(ngModel)]="product.location" maxlength=50 name="location" title="" required>
     </mat-form-field>
 
     <!--DELIVERABLE OR PICKUP-->
     <div id="deliverable">
-        <mat-radio-group id="deliverable-radio" [(ngModel)]="product.deliverable">
+        <mat-radio-group id="deliverable-radio" [(ngModel)]="product.deliverable" name="deliverable">
             <mat-radio-button [value]=false checked>Pickup</mat-radio-button>
             <mat-radio-button [value]=true>Deliverable</mat-radio-button>
         </mat-radio-group>
     </div>
 
     <!--SUBMISSION-->
-    <button id="submit" mat-flat-button (click)="submitProduct()">
-        Submit {{product.type}}
-    </button>
+    <input mat-flat-button type="submit" (click)="submitProduct()" value="Submit">
 
+</form>
 </mat-card>
 
 <app-my-offers></app-my-offers>

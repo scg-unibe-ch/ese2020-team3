@@ -2,8 +2,9 @@
 <!-- my mock page -->
 <mat-card id="input-form">
     <mat-card-content>
+    <form>
 
-        <h2 id="search-form-title">Search for specifics</h2>
+        <h2 id="search-form-title">Look for what YOU want</h2>
 
         <!--LOOK FOR TITLE-->
           <form class="search-field">
@@ -60,8 +61,9 @@
 
 
         <!--SEARCH BUTTON-->
-        <button (click)="searchForProducts()">Search</button>
+        <input id="btn-search" type="submit" (click)="searchForProducts()" value="Search">
 
+      </form>
     </mat-card-content>
 </mat-card>
 

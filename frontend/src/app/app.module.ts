@@ -36,6 +36,8 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { ProductPipe } from './product-pipe.pipe';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 const routes: Routes= [
   {path: 'Login', component: UserLoginComponent},
@@ -84,7 +86,9 @@ const routes: Routes= [
         MatPaginatorModule,
         MatSortModule,
         MatIconModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatFormFieldModule,
+        MatSelectModule
     ],
   providers: [
     {

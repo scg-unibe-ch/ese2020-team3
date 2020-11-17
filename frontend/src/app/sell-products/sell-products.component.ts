@@ -3,6 +3,8 @@ import { Product } from 'src/app/models/product.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ɵWebAnimationsDriver } from '@angular/animations/browser';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {MatFormFieldControl} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-sell-products',
@@ -15,11 +17,9 @@ export class SellProductsComponent implements OnInit {
   userToken = '';
   userName = '';
 
-  sellOptions = ['sell', 'lend'];
-
   product: Product;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.resetAttributes();

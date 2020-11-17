@@ -1,34 +1,23 @@
-#main {
-    width: 80%;
-    position: relative;
+#sell-products-form {
+    width: 40%;
+    text-align: center;
+    top: 30px;
+    bottom: 30px;
+    left: 30%;
+}
+
+h3 {
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+
+mat-form-field, mat-radio-group, select {
+    width: 50%;
     align-self: center;
-    margin-top: 5%;
-    left: 10%;
-    top: 20%;
-    background-color: var(--clr-tertiary);
-    color: var(--clr-primary);
-}
-
-#form-title {
-    font-size: large;
-}
-
-mat-form-field, mat-checkbox, #rent-form {
-    width: 20%;
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-#rent-radio {
+    margin: 10px 0 10px 25%;
     display: block;
 }
 
 mat-radio-button {
-    margin-right: 30px;
-}
-
-button {
-    background-color: var(--clr-secondary);
-    color: var(--clr-tertiary);
+    margin: 10px;
 }

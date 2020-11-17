@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventEmitter, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-welcome-page',
@@ -9,9 +10,12 @@ import { EventEmitter, Output } from '@angular/core';
 export class WelcomePageComponent implements OnInit {
 	@Output() searchEvent = new EventEmitter();
 
+	searchForm: FormControl;
+
 	constructor() { }
 
 	ngOnInit(): void {
+		this.searchForm = new FormControl('', []);
 	}
 
 	onSubmit(searchValue: string) {
