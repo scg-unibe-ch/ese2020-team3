@@ -14,8 +14,6 @@ import {ProductFilter} from '../models/product-filter.model';
 
 export class ShopCatalogueComponent implements OnInit {
 
-  test = 'Guli';
-
   products:Product[] = [];
   paginatedProducts = [];
   filteredProducts = [];
@@ -38,6 +36,10 @@ export class ShopCatalogueComponent implements OnInit {
     this.update();
   }
 
+  /**
+   * Filters the products based on the TEMP_PRODUCT_SEARCH_TERM in localstorage (if it exists).
+   * This value is set from the welcom pages searchbar and is deleted here.
+   */
   searchFromWelcomePage() {
     let searchTerm = localStorage.getItem("TEMP_PRODUCT_SEARCH_TERM");
     if (!!searchTerm) {
