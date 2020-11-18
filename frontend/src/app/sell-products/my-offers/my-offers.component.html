@@ -46,6 +46,12 @@
         <mat-cell *matCellDef="let element"> {{element.deliverable}} </mat-cell>
       </ng-container>
 
+      <!--AUTHORIZED -->
+    <ng-container matColumnDef="authorized">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Authorized </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.authorized}} </mat-cell>
+    </ng-container>
+
        <!--STATUS -->
     <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>

@@ -13,7 +13,7 @@ export class MyOffersComponent implements OnInit {
   products = [];
   paginatedProducts = [];
   changingProduct = this.dummyProduct();
-  displayedColumns = ['title', 'description', 'location', 'lend', 'price', 'deliverable', 'status', 'edit'];
+  displayedColumns = ['title', 'description', 'location', 'lend', 'price', 'deliverable', 'authorized', 'status', 'edit'];
   recordSizes = [5, 10, 20]; //Possible results per page
   defaultRecords = 5; //Default records per page
   totalRecords = 0; //Total amount
