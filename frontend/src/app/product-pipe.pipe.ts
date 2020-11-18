@@ -13,13 +13,17 @@ export class ProductPipe implements PipeTransform {
 
   transform(products: Product[], productFilter: ProductFilter): Product[] {
     return products.filter((product) => 
-      product.title.includes(productFilter.title)
-      && product.location.includes(productFilter.location)
-      && product.type.includes(productFilter.type)
-      && product.sell_lend.includes(productFilter.sell_lend)
+      this.textMatches(product.title, productFilter.title)
+      && this.textMatches(product.location, productFilter.location)
+      && this.textMatches(product.type, productFilter.type)
+      && this.textMatches(product.sell_lend, productFilter.sell_lend)
       && this.deliverableMatches(product.deliverable, productFilter.deliverable)
       && this.priceMatches(product.price, productFilter.minPrice, productFilter.maxPrice)
     );
+  }
+
+  textMatches(productText: string, productFilterText: string) {
+    return productText.toLowerCase().includes(productFilterText.toLowerCase());
   }
 
   deliverableMatches(productDeliverable: boolean, productFilterDeliverable: string) {

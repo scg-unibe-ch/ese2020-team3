@@ -23,11 +23,11 @@ export class HomeComponent implements OnInit {
       text = "Logged in as: " + localStorage.getItem('userName');
       if (localStorage.getItem('isAdmin') == "false") {
         //Logged in as user
-         text += " (" + localStorage.getItem('userWallet') + " Points)";
+         text += " (" + localStorage.getItem('userWallet') + "  Pts.)";
       } else {
         //Logged in as admin
         this.isAdmin=true;
-        text += " (Admin)";
+        text += " (Admin, "+localStorage.getItem('userWallet')+" Pts.)";
       }
     } else {
       //Not logged in

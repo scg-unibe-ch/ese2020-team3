@@ -16,6 +16,12 @@
       <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
     </ng-container>
 
+    <!--TYPE-->
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+    </ng-container>
+
     <!--DESCRIPTION -->
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
