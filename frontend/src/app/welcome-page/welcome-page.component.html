@@ -9,7 +9,7 @@
         <form class="search-field">
             <mat-form-field class="example-full-width">
                 <mat-label>Looking for title/location/description</mat-label>
-                <input matInput placeholder="What are you looking for?" [(ngModel)]="searchForm.value" name="title">
+                <input matInput placeholder="What are you looking for?" name="title" [formControl]="searchForm">
             </mat-form-field>
             <input type="submit" (click)="onSubmit(searchForm.value)" value="Search">
         </form>
