@@ -28,6 +28,9 @@
               "src/custom-theme.scss",
               "src/styles.css"
             ],
+            "allowedCommonJsDependencies": [
+              "rxjs",
+           ],
             "scripts": []
           },
           "configurations": {

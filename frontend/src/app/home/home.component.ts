@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { ThemeService } from '../app.component'
 
 @Component({
   selector: 'app-home',
@@ -6,14 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   isAdmin = false;
 
-  constructor() { }
+  ngOnInit(): void {}
+  
+  /*
+  isDarkTheme: Observable<boolean>;
+  
+
+  constructor(private themeService: ThemeService) { }
 
   ngOnInit(): void {
+    this.isDarkTheme = this.themeService.isDarkTheme;
   }
 
+  toggleDarkTheme(checked: boolean) {
+    this.themeService.setDarkTheme(checked);
+  }
+  */
 
   loggedInText(): string {
     var text;
@@ -36,3 +48,4 @@ export class HomeComponent implements OnInit {
     return text;
   }
 }
+

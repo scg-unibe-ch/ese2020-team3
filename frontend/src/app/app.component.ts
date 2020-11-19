@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { TodoList } from './models/todo-list.model';
 import { TodoItem } from './models/todo-item.model';
 import { environment } from '../environments/environment';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
 
 @Component({
@@ -52,5 +54,16 @@ export class AppComponent implements OnInit {
     this.httpClient.delete(environment.endpointURL + 'todolist/' + todoList.listId).subscribe(() => {
       this.todoLists.splice(this.todoLists.indexOf(todoList), 1);
     });
+  }
+}
+
+
+@Injectable()
+export class ThemeService {
+  private _darkTheme = new Subject<boolean>();
+  isDarkTheme = this._darkTheme.asObservable();
+
+  setDarkTheme(isDarkTheme: boolean): void {
+    this._darkTheme.next(isDarkTheme);
   }
 }
