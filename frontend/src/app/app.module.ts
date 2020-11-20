@@ -17,7 +17,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { SellProductsComponent } from './sell-products/sell-products.component';
-import { ShoppingChartComponent } from './shopping-chart/shopping-chart.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { Routes, RouterModule } from "@angular/router";
@@ -40,7 +39,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
+import { ProductDetailsComponent } from './shop-catalogue/product-details/product-details.component';
 
 
 const routes: Routes= [
@@ -48,6 +48,7 @@ const routes: Routes= [
   {path: 'Registration', component: UserRegistrationComponent},
   {path: '', component: WelcomePageComponent},
   {path: 'Shop', component: ShopCatalogueComponent},
+  {path: 'Shop/:productId', component: ProductDetailsComponent},
   {path: 'Sell', component: SellProductsComponent, canActivate: [LoginGuard]},
   {path: 'Authorize', component: ProductAuthorizationComponent, canActivate: [AdminGuard]}
 
@@ -60,7 +61,6 @@ const routes: Routes= [
     TodoItemComponent,
     UserLoginComponent,
     SellProductsComponent,
-    ShoppingChartComponent,
     UserLoginComponent,
     UserRegistrationComponent,
     HomeComponent,
@@ -68,7 +68,8 @@ const routes: Routes= [
     WelcomePageComponent,
     ProductAuthorizationComponent,
     MyOffersComponent,
-    ProductPipe
+    ProductPipe,
+    ProductDetailsComponent
   ],
     imports: [
         BrowserModule,

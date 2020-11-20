@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import {ProductPipe} from '../product-pipe.pipe';
 import {ProductFilter} from '../models/product-filter.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products-catalog',
@@ -22,14 +23,14 @@ export class ShopCatalogueComponent implements OnInit {
   defaultRecords = 5; //Default records per page
   totalRecords = 0; //Total amount
   pageEvent: any;
-  displayedColumns = ['title', 'description', 'location', 'lend', 'price', 'deliverable', 'buy'];
+  displayedColumns = ['title', 'description', 'location', 'lend', 'price', 'deliverable', 'show'];
 
   loggedIn: boolean = false;
   userId: number = 0;
   userWallet: number = 0;
   userToken: string = '';
 
-  constructor(private httpClient: HttpClient, private pipe: ProductPipe) {
+  constructor(private httpClient: HttpClient, private pipe: ProductPipe, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -124,18 +125,8 @@ export class ShopCatalogueComponent implements OnInit {
     this.updatePaginatedProducts();
   }
 
-  //TODO - Buy
-  buyProduct(product: Product) {
-    if (this.loginStillValid()) {
-    } else {
-      window.alert("An Error occured. Please refresh the page!");
-    }
+  //Show product
+  showProduct(product: Product) {
+    this.router.navigateByUrl(`/Shop/${product.productId}`);
   }
-
-  //Returns whether the same person that loaded the page is logged in
-  loginStillValid():boolean {
-    return this.loggedIn && !!(localStorage.getItem('userToken'))  && this.userId == parseInt(localStorage.getItem('userId'));
-  }
-
-
 }

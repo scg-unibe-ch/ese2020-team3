@@ -1,0 +1,13 @@
+<h1 id="title">{{ product.title }}</h1>
+
+<p id="subtitle">{{ product.type }} for {{ product.sell_lend === 'sell'? 'sale' : 'rent' }}</p>
+
+<p id="description">{{ product.description }}</p>
+
+<p id="price">Price: {{ product.price }} Pts.</p>
+
+<p id="location">Offered from {{ product.location }}</p>
+
+<p id="deliverable">Deliverable: {{ product.deliverable }}</p>
+
+<button mat-icon-button matTooltip="Click to Buy" class="iconbutton" (click)="buyProduct()">Buy</button>

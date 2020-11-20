@@ -108,13 +108,13 @@
         <mat-cell *matCellDef="let element"> {{element.deliverable}} </mat-cell>
       </ng-container>
 
-    <!--BUY-->
-    <ng-container matColumnDef="buy">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Buy </mat-header-cell>
-      <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Buy" class="iconbutton"
-          (click)="buyProduct(element)" color="blue">Buy
+    <!--SHOW-->
+    <ng-container matColumnDef="show">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Show </mat-header-cell>
+      <mat-cell *matCellDef="let element"> 
+          <button mat-icon-button matTooltip="Click for details" class="iconbutton" (click)="showProduct(element)" color="blue">Show
           <mat-icon>buy</mat-icon>
-        </button> </mat-cell>
+          </button> </mat-cell>
     </ng-container>
 
     <!--COLUMN NAMES-->
