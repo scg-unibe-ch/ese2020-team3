@@ -17,10 +17,14 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   private sub: any;
   product: Product;
   seller: User;
+  loggedIn: boolean;
+  bought: boolean;
 
   constructor(private route: ActivatedRoute, private httpClient: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+    this.bought = false;
+    this.loggedIn = !!(localStorage.getItem('userToken'));
     this.product = new Product(-1, '', '', '', -1, '', '', 0, '', false, '');
 
     //Get the product id based on the route
@@ -40,17 +44,48 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  //Show error message and return to shop
+  //Show error message and return to shop (Might happen when user manually types in route <- BAD user)
   announceError(message: string) {
     window.alert(`Error: ${message}`);
-    this.router.navigateByUrl('/Shop');
+    this.goToShop();
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
 
+  goToShop() {
+    this.router.navigateByUrl('/Shop');
+  }
+
   buyProduct() {
-    //TODO
+    if (this.userHasEnoughMoney()) {
+      let buyerId = parseInt(localStorage.getItem('userId'));
+
+      this.httpClient.put(environment.endpointURL + `user/sell/${this.product.price}`, {
+        userId: this.product.userId
+      }).subscribe((seller: any) => {
+      });
+
+      this.httpClient.put(environment.endpointURL + `user/buy/${this.product.price}`, {
+        userId: buyerId
+      }).subscribe((buyer: any) => {
+        //Update wallet of current user
+        localStorage.setItem('userWallet', buyer.wallet);
+      });
+
+      this.httpClient.put(environment.endpointURL + `products/buy/${this.product.productId}`, {
+        userId: buyerId
+      }).subscribe((soldProduct: any) => {
+        this.bought = true;
+      });
+    } else {
+      this.announceError("You don't have enough money!")
+    }
+  }
+
+  userHasEnoughMoney() {
+    return !!(localStorage.getItem('userWallet'))
+      && (parseInt(localStorage.getItem('userWallet')) >= this.product.price);
   }
 }

@@ -1,13 +1,25 @@
-<h1 id="title">{{ product.title }}</h1>
+<!--PRODUCT INFORMATION-->
+<div *ngIf="!bought">
 
-<p id="subtitle">{{ product.type }} for {{ product.sell_lend === 'sell'? 'sale' : 'rent' }}</p>
+    <h1 id="title">{{ product.title }}</h1>
 
-<p id="description">{{ product.description }}</p>
+    <p id="subtitle">{{ product.type }} for {{ product.sell_lend === 'sell'? 'sale' : 'rent' }}</p>
 
-<p id="price">Price: {{ product.price }} Pts.</p>
+    <p id="description">{{ product.description }}</p>
 
-<p id="location">Offered from {{ product.location }}</p>
+    <p id="price">Price: {{ product.price }} Pts.</p>
 
-<p id="deliverable">Deliverable: {{ product.deliverable }}</p>
+    <p id="location">Offered from {{ product.location }}</p>
 
-<button mat-icon-button matTooltip="Click to Buy" class="iconbutton" (click)="buyProduct()">Buy</button>
+    <p id="deliverable">Deliverable: {{ product.deliverable }}</p>
+
+    <!--BUY button is only accessible for logged in users-->
+    <button *ngIf="loggedIn" mat-icon-button matTooltip="Click to Buy" class="iconbutton" (click)="buyProduct()">Buy</button>
+
+</div>
+
+<!--AFTER PURCHASE-->
+<div *ngIf="bought">
+    <h1>You successfully purchased {{ product.title }}</h1>
+    <button mat-icon-button matTooltip="Back to Shop" class="iconbutton" (click)="goToShop()">Back</button>
+</div>
