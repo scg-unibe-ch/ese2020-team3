@@ -9,14 +9,14 @@
         <mat-form-field>
           <input matInput placeholder="Password" [(ngModel)]="password" name="password" type="password">
         </mat-form-field>
-        <input color="primary" type="submit" (click)="login()" value="Login">
+        <input class="submit-btn" color="primary" type="submit" (click)="login()" value="Login">
     </mat-card>
   </form>
   </div>
 
   <div *ngIf="loggedIn">
       <mat-card>
-    <button mat-flat-button color="warn" (click)="logout()">Logout</button>
+    <button class="submit-btn" (click)="logout()">Logout</button>
     You are currently logged in as {{ userName }}
   </mat-card>
   </div>
@@ -30,7 +30,7 @@
 
   <p>
     You haven't registered yet?
-    <button  routerLink="/Registration" mat-button color="primary" type="submit">
+    <button  class="submit-btn" routerLink="/Registration" type="submit">
       Register
     </button>
   </p>

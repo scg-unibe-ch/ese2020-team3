@@ -8,24 +8,27 @@ import { ThemeService } from '../app.component'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
   isAdmin = false;
 
+  /*THEMES****************************************/
+  lightTheme: Map<String, String> = new Map([
+    ["--clr-primary-text", "#383838"], //Dark Gray
+    ["--clr-secondary-text", "#573a3a"], //Black-ish-Red-ish
+    ["--clr-tertiary-text", "#ba0000"] //Red
+  ]);
+  darkTheme: Map<String, String> = new Map([
+    ["--clr-primary-text", "#f2f2f2"], //White-ish
+    ["--clr-secondary-text", "#b3a8a8"], //A bit darker
+    ["--clr-tertiary-text", "#de7878"] //Pink-ish
+  ]);
+  themes: Map<String, Map<String, String>> = new Map([
+    ["Light", this.lightTheme],
+    ["Dark", this.darkTheme]
+  ]);
+  /***********************************************/
+
   ngOnInit(): void {}
-  
-  /*
-  isDarkTheme: Observable<boolean>;
-  
-
-  constructor(private themeService: ThemeService) { }
-
-  ngOnInit(): void {
-    this.isDarkTheme = this.themeService.isDarkTheme;
-  }
-
-  toggleDarkTheme(checked: boolean) {
-    this.themeService.setDarkTheme(checked);
-  }
-  */
 
   loggedInText(): string {
     var text;
@@ -46,6 +49,12 @@ export class HomeComponent implements OnInit {
       text = "Not logged in";
     }
     return text;
+  }
+
+  changeTheme(theme: Map<String, String>) {
+    theme.forEach((value: string, key: string) => {
+      document.documentElement.style.setProperty(value, key);
+    });
   }
 }
 

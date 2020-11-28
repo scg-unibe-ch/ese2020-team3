@@ -13,7 +13,6 @@
 </mat-toolbar>
 
 
-
 <nav class = "topnav" mat-tab-nav-bar>
 
   <a class="link" id="home" mat-tab-link
@@ -59,7 +58,12 @@
      [routerLinkActiveOptions]="{exact:true}"
      #rla5="routerLinkActive"
      [active]="rla5.isActive">Register</a>
+
    </div>
+
+   <option *ngFor="let theme of themes.keys()">
+      {{theme}}
+   </option>
 
 </nav>
 

@@ -31,6 +31,8 @@
     border: 3px solid var(--clr-tertiary);
     height: 30px;
     letter-spacing: 2px;
+    transition: 0.3s letter-spacing ease;
+    transition: 0.3s font-size ease;
 }
 
 .nav-right {
