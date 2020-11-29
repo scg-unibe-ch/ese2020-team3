@@ -24,12 +24,11 @@
               "src/assets"
             ],
             "styles": [
-              //"./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/custom-theme.scss",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "allowedCommonJsDependencies": [
-              "rxjs",
+              "rxjs"
            ],
             "scripts": []
           },

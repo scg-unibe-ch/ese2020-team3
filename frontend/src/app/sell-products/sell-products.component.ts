@@ -13,6 +13,8 @@ import {MatFormFieldControl} from '@angular/material/form-field';
 })
 export class SellProductsComponent implements OnInit {
 
+  offering = false;
+  successfulOffer = false;
   loggedIn = false;
   userToken = '';
   userName = '';
@@ -64,11 +66,11 @@ export class SellProductsComponent implements OnInit {
         authorized: this.product.authorized
       }).subscribe((product: any) => {
         this.product.userId = product.userId;
+        this.offering = false;
+        this.successfulOffer = true;
       }), (error: any) => {
         window.alert("An Error occured. Your Product was not sent!")
       };
-
-      window.alert('Your '+this.product.type+' has been submitted!');
       this.resetAttributes();
     }
   }

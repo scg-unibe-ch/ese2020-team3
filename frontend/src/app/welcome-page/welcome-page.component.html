@@ -11,16 +11,18 @@
                 <mat-label>Looking for title/location/description</mat-label>
                 <input matInput placeholder="What are you looking for?" name="title" [formControl]="searchForm">
             </mat-form-field>
-            <input type="submit" (click)="onSubmit(searchForm.value)" value="Search">
+            <input class="submit-btn" type="submit" (click)="onSubmit(searchForm.value)" value="Search">
         </form>
 
-        <button  routerLink="/Shop" mat-button>
+        <!--
+        <button class="submit-btn" routerLink="/Shop" mat-button>
             Shop
         </button>
 
-        <button  routerLink="/Sell" mat-button>
+        <button class="submit-btn" routerLink="/Sell" mat-button>
             Sell
         </button>
+        -->
 
     </div>
 </div>

@@ -2,9 +2,16 @@
 /*@import '@angular/material/prebuilt-themes/deeppurple-amber.css';*/
 
 :root {
-  --clr-primary: #1d296e;
-  --clr-secondary: #f1ffda;
-  --clr-tertiary: #6385bf;
+  --clr-alpha: #1d296e;
+  --clr-beta: #f1ffda;
+  --clr-gamma: #6385bf;
+  --clr-delta: #6385bf;
+  --clr-epsilon: #6385bf;
+  --clr-zeta: #6385bf;
+}
+
+* {
+  transition: 0.3s all ease;
 }
 
 html, body {
@@ -15,12 +22,16 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: var(--clr-secondary);
+  color: var(--clr-zeta);
+  background-color: var(--clr-alpha);
 }
 
+/*MAT FORM STUFF*/
 .mat-card {
   margin: 20px 0;
-  background-color: #EEE;
+  color: var(--clr-zeta);
+  background-color: var(--clr-epsilon);
+  background-color: none;
 }
 
 .button, .input {
@@ -28,24 +39,54 @@ body {
   margin-right: 15px !important;
 }
 
+.mat-form-field-empty.mat-form-field-label, .mat-form-field .mat-form-field-label {
+  color: var(--clr-zeta);
+}
+
 .mat-form-field-wrapper {
   margin-right: 25px !important;
 }
 
-.submit-btn {
-  border: none;
-  cursor: pointer;
-  color: var(--clr-primary);
-  background-color: var(--clr-secondary);
-  font-size: large;
+.table-cell, .table-container {
+  color: var(--clr-zeta);
+  background-color: var(--clr-epsilon);
   padding: 5px;
-  border-radius: 5px;
-  letter-spacing: 0.1rem;
-  transition: 0.3s color ease;
-  transition: 0.3s background-color ease;
 }
 
-.submit-btn:hover {
-  color: var(--clr-secondary);
-  background-color: var(--clr-primary);
+/*BUTTON CLASSES*/
+.submit-btn, .reject-btn {
+  border: none;
+  cursor: pointer;
+  color: var(--clr-zeta);
+  background-color: var(--clr-gamma);
+  font-size: large;
+  padding: 5px;
+  margin: 20px;
+  border-radius: 5px;
+  letter-spacing: 0.1rem;
+}
+
+.reject-btn {
+  background-color: var(--clr-beta);
+}
+
+.submit-btn:hover, .reject-btn:hover {
+  background-color: var(--clr-delta);
+}
+
+.reject-btn:hover {
+  background-color: var(--clr-gamma);
+}
+
+.submit-btn:disabled, .reject-btn:disabled {
+  color: var(--clr-epsilon);
+}
+
+/*OTHER INPUTS*/
+select {
+  border: 1px solid var(--clr-gamma);
+  border-radius: 2px;
+  color: var(--clr-zeta);
+  background-color: var(--clr-beta);
+  cursor: pointer;
 }

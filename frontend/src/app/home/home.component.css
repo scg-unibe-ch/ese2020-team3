@@ -6,8 +6,8 @@
 
 .topspan {
     text-align: center;
-    color: black;
-    background-color: var(--clr-primary);
+    color: var(--clr-zeta);
+    background-color: var(--clr-alpha);
 }
 
 .span-title {
@@ -21,18 +21,7 @@
 
 .topnav {
     overflow: hidden;
-    background-color: var(--clr-primary);
-}
-
-.link {
-    margin: 5px 5px 5px 5px;
-    color: var(--clr-tertiary);
-    background-color: var(--clr-secondary);
-    border: 3px solid var(--clr-tertiary);
-    height: 30px;
-    letter-spacing: 2px;
-    transition: 0.3s letter-spacing ease;
-    transition: 0.3s font-size ease;
+    background-color: var(--clr-alpha);
 }
 
 .nav-right {
@@ -40,9 +29,19 @@
     text-align: right;
 }
 
+.link {
+    color: var(--clr-zeta);
+    width: 10%;
+    transition: 0.3s all ease;
+    font-size: 1.2rem;
+}
+
 .link:hover {
-    color: var(--clr-tertiary);;
-    border: 5px solid var(--clr-tertiary); ;
-    font-size: medium;
-    letter-spacing: 1px;
+    letter-spacing: 0.1rem;
+    font-size: 1.3rem;
+}
+
+.link:active {
+    letter-spacing: 0.2rem;
+    font-size: 1.4rem;
 }

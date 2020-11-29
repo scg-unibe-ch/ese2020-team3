@@ -14,7 +14,7 @@
     <p id="deliverable">Deliverable: {{ product.deliverable }}</p>
 
     <!--BUY button is only accessible for logged in users-->
-    <button *ngIf="loggedIn" mat-icon-button matTooltip="Click to Buy" class="iconbutton" (click)="buyProduct()">Buy</button>
+    <button *ngIf="loggedIn" matTooltip="Click to Buy" class="submit-btn" (click)="buyProduct()">Buy</button>
 
 </div>
 

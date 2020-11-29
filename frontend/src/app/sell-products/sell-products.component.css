@@ -1,9 +1,18 @@
-#sell-products-form {
+#sell-products-form, #make-offer, #successful-offer {
     width: 40%;
     text-align: center;
     top: 30px;
     bottom: 30px;
     left: 30%;
+}
+
+#make-offer, #successful-offer {
+    cursor: pointer;
+}
+
+#make-offer:hover, #successfull-offer:hover {
+    background-color: var(--clr-zeta);
+    color: var(--clr-epsilon);
 }
 
 h3 {

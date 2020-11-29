@@ -12,23 +12,31 @@ export class HomeComponent implements OnInit {
   isAdmin = false;
 
   /*THEMES****************************************/
-  lightTheme: Map<String, String> = new Map([
-    ["--clr-primary-text", "#383838"], //Dark Gray
-    ["--clr-secondary-text", "#573a3a"], //Black-ish-Red-ish
-    ["--clr-tertiary-text", "#ba0000"] //Red
-  ]);
-  darkTheme: Map<String, String> = new Map([
-    ["--clr-primary-text", "#f2f2f2"], //White-ish
-    ["--clr-secondary-text", "#b3a8a8"], //A bit darker
-    ["--clr-tertiary-text", "#de7878"] //Pink-ish
-  ]);
   themes: Map<String, Map<String, String>> = new Map([
-    ["Light", this.lightTheme],
-    ["Dark", this.darkTheme]
+    ["light", new Map([
+      ["--clr-alpha", "#E77170"],
+      ["--clr-beta", "#C2CAD0"],
+      ["--clr-gamma", "#C2B9B0"],
+      ["--clr-delta", "#7E685A"],
+      ["--clr-epsilon", "#AFD275"],
+      ["--clr-zeta", "#222222"]
+    ])],
+    ["dark", new Map([
+        ["--clr-alpha", "#0C0032"],
+        ["--clr-beta", "#190061"],
+        ["--clr-gamma", "#240090"],
+        ["--clr-delta", "#3500D3"],
+        ["--clr-epsilon", "#282828"],
+        ["--clr-zeta", "#DDDDDD"]
+    ])]
   ]);
+  themesKeys:String[] = Array.from(this.themes.keys());
+  selectedTheme: String = "light";
   /***********************************************/
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.toggleTheme();
+  }
 
   loggedInText(): string {
     var text;
@@ -51,9 +59,10 @@ export class HomeComponent implements OnInit {
     return text;
   }
 
-  changeTheme(theme: Map<String, String>) {
+  toggleTheme(): void {
+    const theme: Map<String, String> = this.themes.get(this.selectedTheme);
     theme.forEach((value: string, key: string) => {
-      document.documentElement.style.setProperty(value, key);
+      document.documentElement.style.setProperty(key, value);
     });
   }
 }

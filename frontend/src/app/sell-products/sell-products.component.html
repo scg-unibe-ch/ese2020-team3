@@ -1,4 +1,12 @@
-<mat-card id="sell-products-form">
+<mat-card *ngIf="!offering&&!successfulOffer" id="make-offer" (click)="offering=true">
+    <h1>Make an offer</h1>
+</mat-card>
+
+<mat-card *ngIf="!offering&&successfulOffer" id="successful-offer" (click)="successfulOffer=false">
+    <h1>Successfully submitted offer</h1>
+</mat-card>
+
+<mat-card id="sell-products-form" *ngIf="offering">
 <form>
 
     <h3 id="form-title">Offer a {{product.type}}</h3>
@@ -9,7 +17,7 @@
 
     <!--TYPE-->
     Type: 
-    <select id="type-select" color="primary" [(ngModel)]="product.type" name="type">
+    <select id="type-select" [(ngModel)]="product.type" name="type">
         <option value="Product">Product</option>
         <option value="Service">Service</option>
     </select>
@@ -66,7 +74,7 @@
     </div>
 
     <!--SUBMISSION-->
-    <input mat-flat-button type="submit" (click)="submitProduct()" value="Submit">
+    <input class="submit-btn" type="submit" (click)="submitProduct()" value="Submit">
 
 </form>
 </mat-card>
