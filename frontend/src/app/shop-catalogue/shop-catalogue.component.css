@@ -16,12 +16,8 @@ mat-radio-button {
   width: 80%;
 }
 
-#catalogue {
+#catalogue, #paginator {
   width: 60%;
   margin-left: 30%;
   margin-right: 10%;
-}
-
-#paginator {
-  width: 100%;
 }

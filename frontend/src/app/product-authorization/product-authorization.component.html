@@ -4,35 +4,35 @@
 mat-table [dataSource]="products" class="mat-elevation-z8">
 
   <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef> Title </th>
+    <th class="table-cell" mat-header-cell *matHeaderCellDef> Title </th>
     <td mat-cell class="table-cell" *matCellDef="let element"> {{element.title}} </td>
   </ng-container>
 
   <ng-container matColumnDef="location">
-    <th mat-header-cell *matHeaderCellDef> Location </th>
+    <th class="table-cell" mat-header-cell *matHeaderCellDef> Location </th>
     <td mat-cell class="table-cell" *matCellDef="let element"> {{element.location}} </td>
   </ng-container>
 
   <ng-container matColumnDef="delivarable">
-    <th mat-header-cell *matHeaderCellDef> Delivarable </th>
+    <th class="table-cell" mat-header-cell *matHeaderCellDef> Delivarable </th>
     <td mat-cell class="table-cell" *matCellDef="let element"> {{element.delivarable}} </td>
   </ng-container>
 
   <ng-container matColumnDef="description">
-    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <th class="table-cell" mat-header-cell *matHeaderCellDef> Description </th>
     <td mat-cell class="table-cell" *matCellDef="let element"> {{element.description}} </td>
   </ng-container>
 
   <ng-container matColumnDef="price">
-    <th mat-header-cell *matHeaderCellDef> Price </th>
+    <th class="table-cell" mat-header-cell *matHeaderCellDef> Price </th>
     <td mat-cell class="table-cell" *matCellDef="let element"> {{element.price}} </td>
   </ng-container>
 
   <ng-container matColumnDef="acceptorreject">
-    <th mat-header-cell *matHeaderCellDef> Authorize </th>
+    <th class="table-cell" mat-header-cell *matHeaderCellDef> Authorize </th>
     <td mat-cell class="table-cell" *matCellDef="let element">
-      <button mat-raised-button color="primary" (click)="authorizeProduct(element)">Accept</button>
-      <button mat-raised-button color="warn" (click)="rejectProduct(element.productId)">Reject</button>
+      <button mat-raised-button class="submit-btn" (click)="authorizeProduct(element)">Accept</button>
+      <button mat-raised-button class="reject-btn" (click)="rejectProduct(element.productId)">Reject</button>
     </td>
   </ng-container>
 

@@ -47,10 +47,15 @@ body {
   margin-right: 25px !important;
 }
 
-.table-cell, .table-container {
+.table-cell, .table-row {
   color: var(--clr-zeta);
   background-color: var(--clr-epsilon);
   padding: 5px;
+}
+
+#paginator {
+  color: var(--clr-zeta) !important;
+  background-color: var(--clr-epsilon) !important;
 }
 
 /*BUTTON CLASSES*/
@@ -67,15 +72,16 @@ body {
 }
 
 .reject-btn {
-  background-color: var(--clr-beta);
+  background-color: red;
 }
 
-.submit-btn:hover, .reject-btn:hover {
-  background-color: var(--clr-delta);
+.submit-btn:hover {
+  color: var(--clr-gamma);
+  background-color: var(--clr-zeta);
 }
 
 .reject-btn:hover {
-  background-color: var(--clr-gamma);
+  background-color: #FF96A6;
 }
 
 .submit-btn:disabled, .reject-btn:disabled {

@@ -12,61 +12,61 @@
 
     <!--TITLE-->
     <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+      <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
       <mat-cell class="table-cell" *matCellDef="let element"> {{element.title}} </mat-cell>
     </ng-container>
 
     <!--TYPE-->
     <ng-container matColumnDef="type">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
+      <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
       <mat-cell class="table-cell" *matCellDef="let element"> {{element.type}} </mat-cell>
     </ng-container>
 
     <!--DESCRIPTION -->
     <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+      <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
       <mat-cell class="table-cell" *matCellDef="let element"> {{element.description}} </mat-cell>
     </ng-container>
 
     <!--LOCATION -->
     <ng-container matColumnDef="location">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Location </mat-header-cell>
+        <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Location </mat-header-cell>
         <mat-cell class="table-cell" *matCellDef="let element"> {{element.location}} </mat-cell>
       </ng-container>
 
       <!--LEND -->
     <ng-container matColumnDef="lend">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Rent </mat-header-cell>
+        <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Rent </mat-header-cell>
         <mat-cell class="table-cell" *matCellDef="let element"> {{element.sell_lend}} </mat-cell>
       </ng-container>
 
       <!--PRICE -->
     <ng-container matColumnDef="price">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+        <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
         <mat-cell class="table-cell" *matCellDef="let element"> {{element.price}} Pts. {{element.sell_lend=='lend'? '/h':''}}</mat-cell>
       </ng-container>
 
       <!--DELIVERABLE -->
     <ng-container matColumnDef="deliverable">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Deliverable </mat-header-cell>
+        <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Deliverable </mat-header-cell>
         <mat-cell class="table-cell" *matCellDef="let element"> {{element.deliverable}} </mat-cell>
       </ng-container>
 
       <!--AUTHORIZED -->
     <ng-container matColumnDef="authorized">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Authorized </mat-header-cell>
+      <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Authorized </mat-header-cell>
       <mat-cell class="table-cell" *matCellDef="let element"> {{element.authorized}} </mat-cell>
     </ng-container>
 
        <!--STATUS -->
     <ng-container matColumnDef="status">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+        <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
         <mat-cell class="table-cell" *matCellDef="let element"> {{element.status}} </mat-cell>
       </ng-container>
 
     <!--EDIT-->
     <ng-container matColumnDef="edit">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
+      <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
       <mat-cell class="table-cell" *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
           (click)="editProduct(element)">Edit
           <mat-icon>buy</mat-icon>
@@ -75,7 +75,7 @@
 
     <!--COLUMN NAMES-->
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row class="table-cell" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row class="table-row" *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 
   <!--PAGINATOR-->

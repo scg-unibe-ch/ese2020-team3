@@ -73,44 +73,44 @@
 <mat-table id="catalogue" #table [dataSource]="paginatedProducts" matSort>
 
     <!--TITLE-->
-    <ng-container class="table-container" matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+    <ng-container matColumnDef="title">
+      <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
       <mat-cell class="table-cell" *matCellDef="let element"> {{element.title}} </mat-cell>
     </ng-container>
 
     <!--DESCRIPTION -->
     <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+      <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
       <mat-cell class="table-cell" *matCellDef="let element"> {{element.description}} </mat-cell>
     </ng-container>
 
     <!--LOCATION -->
     <ng-container matColumnDef="location">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Location </mat-header-cell>
+        <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Location </mat-header-cell>
         <mat-cell class="table-cell" *matCellDef="let element"> {{element.location}} </mat-cell>
       </ng-container>
 
       <!--LEND -->
     <ng-container matColumnDef="lend">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Rent </mat-header-cell>
+        <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Rent </mat-header-cell>
         <mat-cell class="table-cell" *matCellDef="let element"> {{element.sell_lend}} </mat-cell>
       </ng-container>
 
       <!--PRICE -->
     <ng-container matColumnDef="price">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+        <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
         <mat-cell class="table-cell" *matCellDef="let element"> {{element.price}} Pts. {{element.sell_lend=='lend'? '/h':''}}</mat-cell>
       </ng-container>
 
       <!--DELIVERABLE -->
     <ng-container matColumnDef="deliverable">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Deliverable </mat-header-cell>
+        <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Deliverable </mat-header-cell>
         <mat-cell class="table-cell" *matCellDef="let element"> {{element.deliverable}} </mat-cell>
       </ng-container>
 
     <!--SHOW-->
     <ng-container matColumnDef="show" id="show">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Show </mat-header-cell>
+      <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Show </mat-header-cell>
       <mat-cell class="table-cell" *matCellDef="let element"> 
           <button matTooltip="Click for details" class="submit-btn" (click)="showProduct(element)">Show
           <mat-icon>buy</mat-icon>
@@ -119,7 +119,7 @@
 
     <!--COLUMN NAMES-->
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row class="table-row" *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 
   <!--PAGINATOR-->
