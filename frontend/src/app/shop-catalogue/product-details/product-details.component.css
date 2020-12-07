@@ -1,0 +1,15 @@
+.product-details-container {
+	display: flex;
+	justify-content: center; 
+	align-items: center;
+}
+
+th, td {
+  padding: 10px;
+}
+
+h2 {
+	margin-bottom: 0px;
+	color: #4a4a4a;
+	text-decoration: italic;
+}

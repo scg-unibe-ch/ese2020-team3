@@ -1,21 +1,38 @@
 <!--PRODUCT INFORMATION-->
-<div *ngIf="!bought">
+<div *ngIf="!bought" class="product-details-container">
+    <mat-card style='width: fit-content;'>
+        <h1 id="title">{{ product.title }}</h1>
 
-    <h1 id="title">{{ product.title }}</h1>
+        <div>
+            <h2>Details</h2>
+            <table style="text-align: left;">
+                <tr id="subtitle">
+                    <th>Product is for</th>
+                    <td>{{ product.sell_lend === 'sell'? 'sale' : 'rent' }}</td>
+                </tr>
+                <tr id="price">
+                    <th>Price</th>
+                    <td>{{ product.price }}</td>
+                </tr>
+                <tr id="location">
+                    <th>Offered from</th>
+                    <td>{{ product.location }}</td>
+                </tr>
+                <tr id="deliverable">
+                    <th>Deliverable</th>
+                    <td>{{ product.deliverable }}</td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div>
+            <h2>Description</h2>
+            <p id="description">{{ product.description }}</p>
+        </div>
 
-    <p id="subtitle">{{ product.type }} for {{ product.sell_lend === 'sell'? 'sale' : 'rent' }}</p>
-
-    <p id="description">{{ product.description }}</p>
-
-    <p id="price">Price: {{ product.price }} Pts.</p>
-
-    <p id="location">Offered from {{ product.location }}</p>
-
-    <p id="deliverable">Deliverable: {{ product.deliverable }}</p>
-
-    <!--BUY button is only accessible for logged in users-->
-    <button *ngIf="loggedIn" matTooltip="Click to Buy" class="submit-btn" (click)="buyProduct()">Buy</button>
-
+        <!--BUY button is only accessible for logged in users-->
+        <button *ngIf="loggedIn" matTooltip="Click to Buy" class="submit-btn" (click)="buyProduct()">Buy</button>
+    </mat-card>
 </div>
 
 <!--AFTER PURCHASE-->
