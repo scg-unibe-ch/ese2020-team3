@@ -67,7 +67,7 @@
     <!--EDIT-->
     <ng-container matColumnDef="edit">
       <mat-header-cell class="table-cell" *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
-      <mat-cell class="table-cell" *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
+      <mat-cell class="table-cell" *matCellDef="let element"> <button *ngIf="element.status !== 'sold'" mat-icon-button matTooltip="Click to Edit" class="iconbutton"
           (click)="editProduct(element)">Edit
           <mat-icon>buy</mat-icon>
         </button> </mat-cell>
