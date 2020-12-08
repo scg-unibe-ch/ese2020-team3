@@ -14,11 +14,11 @@ export class HomeComponent implements OnInit {
   /*THEMES****************************************/
   themes: Map<String, Map<String, String>> = new Map([
     ["light", new Map([
-      ["--clr-alpha", "#E77170"],
+      ["--clr-alpha", "#fafafa"],
       ["--clr-beta", "#C2CAD0"],
-      ["--clr-gamma", "#C2B9B0"],
+      ["--clr-gamma", "#cc2727"],
       ["--clr-delta", "#7E685A"],
-      ["--clr-epsilon", "#AFD275"],
+      ["--clr-epsilon", "#ebebeb"],
       ["--clr-zeta", "#222222"]
     ])],
     ["dark", new Map([
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
         ["--clr-delta", "#3500D3"],
         ["--clr-epsilon", "#282828"],
         ["--clr-zeta", "#DDDDDD"]
-    ])]
+    ])],
   ]);
   themesKeys:String[] = Array.from(this.themes.keys());
   selectedTheme: String = "light";
